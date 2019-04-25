@@ -1,0 +1,14 @@
+{
+  "ProjectFilePath": "c:\\mindenJoSHasztalan\\UniversityAndStuff\\Semester4\\Onedrive\\ViaUC\\SEP 4 - Documents\\SystemImplementation\\DataImplementation\\webapi\\SEP-DataAPI\\SEP-DataAPI.csproj",
+  "TargetFramework": "netcoreapp2.2",
+  "TagHelpers": [],
+  "Configuration": {
+    "ConfigurationName": "MVC-2.1",
+    "LanguageVersion": "2.1",
+    "Extensions": [
+      {
+        "ExtensionName": "MVC-2.1"
+      }
+    ]
+  }
+}
