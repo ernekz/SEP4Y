@@ -147,6 +147,15 @@
     </ToolchainSettings>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="CO2Task.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LEDTask.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="TemperatureTask.c">
+      <SubType>compile</SubType>
+    </Compile>
     <None Include="FreeRTOS\Example\main.c">
       <SubType>compile</SubType>
     </None>

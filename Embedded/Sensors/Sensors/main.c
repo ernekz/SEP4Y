@@ -7,35 +7,30 @@
 #include <hcSr501.h>
 #include <stdio_driver.h>
 
+void my_co2_call_back(uint16_t ppm)
+{
+	printf("CO2 level: %d\n",ppm);
+}
 
-hcSr501_p hcSr501Inst = NULL;
 
 int main(void)
 {
 	stdioCreate(0);
 	sei();
-	hcSr501Inst = hcSr501Create(&PORTE, PE5);
+	mh_z19_create(ser_USART3, my_co2_call_back); 
 	
-	if ( NULL != hcSr501Inst )
-	{
-		printf("Driver created.\n");
-	}else
-	{
-		printf("Driver not created.\n");
-	}
+	uint16_t ppm;
+	mh_z19_return_code_t rc;
 	
 	while (1)
 	{
-		if ( hcSr501IsDetecting(hcSr501Inst) )
-		{
-			printf("something detected\n");
-		}
-		else
-		{
-			printf("nothing detected\n");
-		}
-		
-		_delay_ms(100);
+		rc = mh_z19_take_meassuring();
+	if (rc != MHZ19_OK)
+	{
+		printf("Something went wrong");
 	}
+	_delay_ms(500);
+	}
+	
 }
 
