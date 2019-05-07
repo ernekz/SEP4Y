@@ -12,3 +12,17 @@ C:\mindenJoSHasztalan\UniversityAndStuff\Semester4\Onedrive\ViaUC\SEP 4 - Docume
 C:\mindenJoSHasztalan\UniversityAndStuff\Semester4\Onedrive\ViaUC\SEP 4 - Documents\SystemImplementation\DataImplementation\webapi\SEP-DataAPI\obj\Debug\netcoreapp2.2\SEP-DataAPI.RazorTargetAssemblyInfo.cache
 C:\mindenJoSHasztalan\UniversityAndStuff\Semester4\Onedrive\ViaUC\SEP 4 - Documents\SystemImplementation\DataImplementation\webapi\SEP-DataAPI\obj\Debug\netcoreapp2.2\SEP-DataAPI.dll
 C:\mindenJoSHasztalan\UniversityAndStuff\Semester4\Onedrive\ViaUC\SEP 4 - Documents\SystemImplementation\DataImplementation\webapi\SEP-DataAPI\obj\Debug\netcoreapp2.2\SEP-DataAPI.pdb
+C:\Users\bblan\OneDrive\Documents\GitHub\SEP4Y\Data\SEP-DataAPI\bin\Debug\netcoreapp2.2\SEP-DataAPI.deps.json
+C:\Users\bblan\OneDrive\Documents\GitHub\SEP4Y\Data\SEP-DataAPI\bin\Debug\netcoreapp2.2\SEP-DataAPI.runtimeconfig.json
+C:\Users\bblan\OneDrive\Documents\GitHub\SEP4Y\Data\SEP-DataAPI\bin\Debug\netcoreapp2.2\SEP-DataAPI.runtimeconfig.dev.json
+C:\Users\bblan\OneDrive\Documents\GitHub\SEP4Y\Data\SEP-DataAPI\bin\Debug\netcoreapp2.2\SEP-DataAPI.dll
+C:\Users\bblan\OneDrive\Documents\GitHub\SEP4Y\Data\SEP-DataAPI\bin\Debug\netcoreapp2.2\SEP-DataAPI.pdb
+C:\Users\bblan\OneDrive\Documents\GitHub\SEP4Y\Data\SEP-DataAPI\obj\Debug\netcoreapp2.2\SEP-DataAPI.csprojAssemblyReference.cache
+C:\Users\bblan\OneDrive\Documents\GitHub\SEP4Y\Data\SEP-DataAPI\obj\Debug\netcoreapp2.2\SEP-DataAPI.csproj.CoreCompileInputs.cache
+C:\Users\bblan\OneDrive\Documents\GitHub\SEP4Y\Data\SEP-DataAPI\obj\Debug\netcoreapp2.2\SEP-DataAPI.RazorAssemblyInfo.cache
+C:\Users\bblan\OneDrive\Documents\GitHub\SEP4Y\Data\SEP-DataAPI\obj\Debug\netcoreapp2.2\SEP-DataAPI.RazorAssemblyInfo.cs
+C:\Users\bblan\OneDrive\Documents\GitHub\SEP4Y\Data\SEP-DataAPI\obj\Debug\netcoreapp2.2\SEP-DataAPI.AssemblyInfoInputs.cache
+C:\Users\bblan\OneDrive\Documents\GitHub\SEP4Y\Data\SEP-DataAPI\obj\Debug\netcoreapp2.2\SEP-DataAPI.AssemblyInfo.cs
+C:\Users\bblan\OneDrive\Documents\GitHub\SEP4Y\Data\SEP-DataAPI\obj\Debug\netcoreapp2.2\SEP-DataAPI.RazorTargetAssemblyInfo.cache
+C:\Users\bblan\OneDrive\Documents\GitHub\SEP4Y\Data\SEP-DataAPI\obj\Debug\netcoreapp2.2\SEP-DataAPI.dll
+C:\Users\bblan\OneDrive\Documents\GitHub\SEP4Y\Data\SEP-DataAPI\obj\Debug\netcoreapp2.2\SEP-DataAPI.pdb

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit https://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA36gDHFcxwEGslSquln4XLAAAAAACAAAAAAAQZgAAAAEAACAAAACRI2u9YtPYFa0aiCKcpsTx+1OQi66JpsGiEjkVRTLmTQAAAAAOgAAAAAIAACAAAAAGuJ1i65oJ4BgF82jziLp9tEwQsGuOrZgdvIPwvJz7j4AAAABIr0ztysH+B4R4GbVIgxpXg4Z1X8jOVvWEb0ho+1F7nkMn4wVG8PSQedPgUTeeZ1pOGv52HVvHztv6eB4LQS/vIa9wONFZPkY3LsrKHH2VM/7QRzY0lArDq+mEzRJoWFq133iug+Zfv07GiXdwT4eniCoVEWmkXZBX+7Pc0dbIbEAAAACGVQg13LBFSmPDiZMpPwx73BFiO2C/O90AXeUFoX12DtDGbP8Gi1rqCxXo2q9TKLYQb/sEODzytmNlUg+YnUKQ</EncryptedPassword>
+  </PropertyGroup>
+  <ItemGroup>
+    <DestinationConnectionStrings Include="DefaultConnection">
+      <Value>Data Source=sep4db.database.windows.net%3bInitial Catalog=sep4db%3bUser ID=theadmin%3bPassword=Password123%3bConnect Timeout=30%3bEncrypt=True%3bTrustServerCertificate=False%3bApplicationIntent=ReadWrite%3bMultiSubnetFailover=False</Value>
+    </DestinationConnectionStrings>
+  </ItemGroup>
+</Project>

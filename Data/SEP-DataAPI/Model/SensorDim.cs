@@ -7,7 +7,7 @@ namespace SEP_DataAPI.Model
     {
         public SensorDim()
         {
-            Facts = new HashSet<Facts>();
+            Facts = new HashSet<Fact>();
         }
 
         public int SensorsId { get; set; }
@@ -15,6 +15,6 @@ namespace SEP_DataAPI.Model
         public double? TempF { get; set; }
         public decimal? Co2 { get; set; }
 
-        public virtual ICollection<Facts> Facts { get; set; }
+        public virtual ICollection<Fact> Facts { get; set; }
     }
 }

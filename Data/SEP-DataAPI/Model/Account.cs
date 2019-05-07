@@ -1,45 +1,12 @@
-using System;
-using Newtonsoft.Json;
+﻿using System;
+using System.Collections.Generic;
 
 namespace SEP_DataAPI.Model
 {
-    public class Account 
+    public partial class Account
     {
-    [JsonProperty]
-    private String userName;
-    [JsonProperty]
-    private String password;
-    [JsonProperty]
-    private bool IsAdmin;
-
-    public Account(String userName, String password, bool isAdmin) {
-        this.userName = userName;
-        this.password = password;
-        this.IsAdmin = isAdmin;
-    }
-
-    public String getUserName() {
-        return userName;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public bool isAdmin() {
-        return IsAdmin;
-    }
-
-    public void setAdmin(bool admin) {
-        IsAdmin = admin;
-    }
+        public string Username { get; set; }
+        public string Password { get; set; }
+        public bool isAdmin {get; set;}
     }
 }

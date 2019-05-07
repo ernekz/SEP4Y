@@ -7,7 +7,7 @@ namespace SEP_DataAPI.Model
     {
         public DateDim()
         {
-            Facts = new HashSet<Facts>();
+            Facts = new HashSet<Fact>();
         }
 
         public int DimId { get; set; }
@@ -18,6 +18,6 @@ namespace SEP_DataAPI.Model
         public int Week { get; set; }
         public string DayOfWeek { get; set; }
 
-        public virtual ICollection<Facts> Facts { get; set; }
+        public virtual ICollection<Fact> Facts { get; set; }
     }
 }

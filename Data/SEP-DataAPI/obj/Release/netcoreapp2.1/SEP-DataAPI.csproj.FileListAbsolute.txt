@@ -1,0 +1,15 @@
+C:\Users\bblan\OneDrive\Documents\GitHub\SEP4Y\Data\SEP-DataAPI\bin\Release\netcoreapp2.1\SEP-DataAPI.deps.json
+C:\Users\bblan\OneDrive\Documents\GitHub\SEP4Y\Data\SEP-DataAPI\bin\Release\netcoreapp2.1\SEP-DataAPI.runtimeconfig.json
+C:\Users\bblan\OneDrive\Documents\GitHub\SEP4Y\Data\SEP-DataAPI\bin\Release\netcoreapp2.1\SEP-DataAPI.runtimeconfig.dev.json
+C:\Users\bblan\OneDrive\Documents\GitHub\SEP4Y\Data\SEP-DataAPI\bin\Release\netcoreapp2.1\SEP-DataAPI.dll
+C:\Users\bblan\OneDrive\Documents\GitHub\SEP4Y\Data\SEP-DataAPI\bin\Release\netcoreapp2.1\SEP-DataAPI.pdb
+C:\Users\bblan\OneDrive\Documents\GitHub\SEP4Y\Data\SEP-DataAPI\obj\Release\netcoreapp2.1\SEP-DataAPI.csprojAssemblyReference.cache
+C:\Users\bblan\OneDrive\Documents\GitHub\SEP4Y\Data\SEP-DataAPI\obj\Release\netcoreapp2.1\SEP-DataAPI.csproj.CoreCompileInputs.cache
+C:\Users\bblan\OneDrive\Documents\GitHub\SEP4Y\Data\SEP-DataAPI\obj\Release\netcoreapp2.1\SEP-DataAPI.RazorAssemblyInfo.cache
+C:\Users\bblan\OneDrive\Documents\GitHub\SEP4Y\Data\SEP-DataAPI\obj\Release\netcoreapp2.1\SEP-DataAPI.RazorAssemblyInfo.cs
+C:\Users\bblan\OneDrive\Documents\GitHub\SEP4Y\Data\SEP-DataAPI\obj\Release\netcoreapp2.1\UserSecretsAssemblyInfo.cs
+C:\Users\bblan\OneDrive\Documents\GitHub\SEP4Y\Data\SEP-DataAPI\obj\Release\netcoreapp2.1\SEP-DataAPI.AssemblyInfoInputs.cache
+C:\Users\bblan\OneDrive\Documents\GitHub\SEP4Y\Data\SEP-DataAPI\obj\Release\netcoreapp2.1\SEP-DataAPI.AssemblyInfo.cs
+C:\Users\bblan\OneDrive\Documents\GitHub\SEP4Y\Data\SEP-DataAPI\obj\Release\netcoreapp2.1\SEP-DataAPI.RazorTargetAssemblyInfo.cache
+C:\Users\bblan\OneDrive\Documents\GitHub\SEP4Y\Data\SEP-DataAPI\obj\Release\netcoreapp2.1\SEP-DataAPI.dll
+C:\Users\bblan\OneDrive\Documents\GitHub\SEP4Y\Data\SEP-DataAPI\obj\Release\netcoreapp2.1\SEP-DataAPI.pdb

@@ -7,13 +7,13 @@ namespace SEP_DataAPI.Model
     {
         public RoomDim()
         {
-            Facts = new HashSet<Facts>();
+            Facts = new HashSet<Fact>();
         }
 
         public int RoomId { get; set; }
         public string Teacher { get; set; }
         public DateTime? DataCreated { get; set; }
 
-        public virtual ICollection<Facts> Facts { get; set; }
+        public virtual ICollection<Fact> Facts { get; set; }
     }
 }
