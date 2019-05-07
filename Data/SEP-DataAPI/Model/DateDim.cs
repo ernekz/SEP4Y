@@ -16,6 +16,7 @@ namespace SEP_DataAPI.Model
         public int Quarter { get; set; }
         public int Month { get; set; }
         public int Week { get; set; }
+        public int Day { get; set; }
         public string DayOfWeek { get; set; }
 
         public virtual ICollection<Fact> Facts { get; set; }

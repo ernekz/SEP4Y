@@ -11,7 +11,7 @@ namespace SEP_DataAPI.Model
         }
 
         public int RoomId { get; set; }
-        public string Teacher { get; set; }
+        public string Name { get; set; }
         public DateTime? DataCreated { get; set; }
 
         public virtual ICollection<Fact> Facts { get; set; }
