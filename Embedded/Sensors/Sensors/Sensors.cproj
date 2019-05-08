@@ -153,6 +153,9 @@
     <Compile Include="LEDTask.c">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="LoraHandler.c">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="TemperatureTask.c">
       <SubType>compile</SubType>
     </Compile>

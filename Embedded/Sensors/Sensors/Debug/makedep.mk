@@ -6,6 +6,8 @@ CO2Task.c
 
 LEDTask.c
 
+LoraHandler.c
+
 TemperatureTask.c
 
 FreeRTOS\FreeRTOSTraceDriver\FreeRTOSTraceDriver.c

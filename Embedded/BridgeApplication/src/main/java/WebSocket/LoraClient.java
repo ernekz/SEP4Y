@@ -13,7 +13,7 @@ public class LoraClient implements Listener {
     public LoraClient(){
         HttpClient client = HttpClient.newHttpClient();
         CompletableFuture<WebSocket> ws= client.newWebSocketBuilder()
-                .buildAsync(URI.create("ww"), (WebSocket.Listener) this);
+                .buildAsync(URI.create("wss://iotnet.teracom.dk/app?token=vnoRlAAAABFpb3RuZXQudGVyYWNvbS5kay68arsawh5bptw7waIoimg="), (WebSocket.Listener) this);
     }
     @Override
     public void onOpen(WebSocket webSocket) {
