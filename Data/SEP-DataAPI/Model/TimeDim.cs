@@ -11,7 +11,7 @@ namespace SEP_DataAPI.Model
         }
 
         public int TimeId { get; set; }
-        public DateTime Time { get; set; }
+        public TimeSpan Time { get; set; }
         public int Hour { get; set; }
         public int Minute { get; set; }
         public int Second { get; set; }

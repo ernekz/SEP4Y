@@ -13,8 +13,8 @@ namespace SEP_DataAPI.Model
         public double? TempC { get; set; }
         public double? TempF { get; set; }
         public decimal? Co2 { get; set; }
-        public virtual DateDim Dim { get; set; }
-        public virtual DateDim Time { get; set; }
+        public virtual DateDim Date { get; set; }
+        public virtual TimeDim Time { get; set; }
         public virtual RoomDim Room { get; set; }
         public virtual SensorDim Sensors { get; set; }
     }

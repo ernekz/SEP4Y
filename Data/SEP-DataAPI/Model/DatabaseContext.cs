@@ -79,7 +79,7 @@ namespace SEP_DataAPI.Model
 
                 entity.Property(e => e.TempF).HasColumnName("Temp_f");
 
-                entity.HasOne(d => d.Dim)
+                entity.HasOne(d => d.Date)
                     .WithMany(p => p.Facts)
                     .HasForeignKey(d => d.DimId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
