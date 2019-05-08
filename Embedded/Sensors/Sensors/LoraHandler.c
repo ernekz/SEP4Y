@@ -4,8 +4,8 @@
 #include <lora_driver.h>
 #include <iled.h>
 
-#define LORA_appEUI "XXXXXXXXXXXXXXX"
-#define LORA_appKEY "YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY"
+#define LORA_appEUI "4203716466d93a07"
+#define LORA_appKEY "7dc57c5406c0882d3a4d5a9ed7ae5c6f"
 
 static char _out_buf[100];
 
@@ -129,6 +129,6 @@ void lora_handler_task( void *pvParameters )
 		_uplink_payload.bytes[5] = co2_ppm & 0xFF;
 
 		led_short_puls(led_ST4);  // OPTIONAL
-		printf("Upload Message >%s<\n", lora_driver_map_return_code_to_text(							lora_driver_sent_upload_message(false, &_uplink_payload)));
+		printf("Upload Message >%s<\n", lora_driver_map_return_code_to_text(lora_driver_sent_upload_message(true, &_uplink_payload)));
 	}
 }
