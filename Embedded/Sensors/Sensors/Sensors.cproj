@@ -46,7 +46,7 @@
     <com_atmel_avrdbg_tool_atmelice>
       <ToolOptions>
         <InterfaceProperties>
-          <JtagDbgClock>200000</JtagDbgClock>
+          <JtagDbgClock>300000</JtagDbgClock>
         </InterfaceProperties>
         <InterfaceName>JTAG</InterfaceName>
       </ToolOptions>
@@ -55,7 +55,7 @@
       <ToolName>Atmel-ICE</ToolName>
     </com_atmel_avrdbg_tool_atmelice>
     <avrtoolinterface>JTAG</avrtoolinterface>
-    <avrtoolinterfaceclock>200000</avrtoolinterfaceclock>
+    <avrtoolinterfaceclock>300000</avrtoolinterfaceclock>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
     <ToolchainSettings>
@@ -118,6 +118,9 @@
             <Value>../../../stdio</Value>
             <Value>../FreeRTOS/src</Value>
             <Value>../../../Iot driver Library</Value>
+            <Value>../Headers</Value>
+            <Value>../Tasks</Value>
+            <Value>../Setup</Value>
           </ListValues>
         </avrgcc.compiler.directories.IncludePaths>
         <avrgcc.compiler.optimization.level>Optimize (-O1)</avrgcc.compiler.optimization.level>
@@ -150,10 +153,22 @@
     <Compile Include="CO2Task.c">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="Headers\m_lora_includes.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="LEDTask.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="LoraHandler.c">
+    <Compile Include="Setup\lora_handler_create.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Setup\lora_setup.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Setup\driver_init.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Tasks\lora_handler_task.c">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="TemperatureTask.c">
@@ -258,6 +273,9 @@
     <Folder Include="FreeRTOS\Example\" />
     <Folder Include="FreeRTOS\FreeRTOSTraceDriver\" />
     <Folder Include="FreeRTOS\src\" />
+    <Folder Include="Headers" />
+    <Folder Include="Setup" />
+    <Folder Include="Tasks" />
   </ItemGroup>
   <ItemGroup>
     <None Include="FreeRTOS\.git">

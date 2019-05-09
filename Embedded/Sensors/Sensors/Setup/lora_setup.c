@@ -1,30 +1,15 @@
-#include <stddef.h>
-#include <stdio.h>
-#include "ATMEGA_FreeRTOS.h"
-#include <lora_driver.h>
-#include <iled.h>
+/*
+ * lora_setup.c
+ *
+ * Created: 5/8/2019 2:11:48 PM
+ *  Author: drags
+ */ 
 
-#define LORA_appEUI "4203716466d93a07"
-#define LORA_appKEY "7dc57c5406c0882d3a4d5a9ed7ae5c6f"
+#include "../Headers/m_lora_includes.h"
 
 static char _out_buf[100];
 
-void lora_handler_task( void *pvParameters );
-
-static lora_payload_t _uplink_payload;
-
-void lora_handler_create(UBaseType_t lora_handler_task_priority)
-{
-	xTaskCreate(
-	lora_handler_task
-	,  (const portCHAR *)"LRHand"  // A name just for humans
-	,  configMINIMAL_STACK_SIZE+200  // This stack size can be checked & adjusted by reading the Stack Highwater
-	,  NULL
-	,  lora_handler_task_priority  // Priority, with 3 (configMAX_PRIORITIES - 1) being the highest, and 0 being the lowest.
-	,  NULL );
-}
-
-static void _lora_setup(void)
+void lora_setup(void)
 {
 	e_LoRa_return_code_t rc;
 	led_slow_blink(led_ST2); // OPTIONAL: Led the green led blink slowly while we are setting up LoRa
@@ -89,46 +74,5 @@ static void _lora_setup(void)
 		{
 			taskYIELD();
 		}
-	}
-}
-
-/*-----------------------------------------------------------*/
-void lora_handler_task( void *pvParameters )
-{
-	static e_LoRa_return_code_t rc;
-
-	// Hardware reset of LoRaWAN transceiver
-	lora_driver_reset_rn2483(1);
-	vTaskDelay(2);
-	lora_driver_reset_rn2483(0);
-	// Give it a chance to wakeup
-	vTaskDelay(150);
-
-	lora_driver_flush_buffers(); // get rid of first version string from module after reset!
-
-	_lora_setup();
-
-	_uplink_payload.len = 6;
-	_uplink_payload.port_no = 2;
-
-
-	for(;;)
-	{
-		vTaskDelay(pdMS_TO_TICKS(5000UL));
-
-		// Some dummy payload
-		uint16_t hum = 12345; // Dummy humidity
-		int16_t temp = 675; // Dummy temp
-		uint16_t co2_ppm = 1050; // Dummy CO2
-
-		_uplink_payload.bytes[0] = hum >> 8;
-		_uplink_payload.bytes[1] = hum & 0xFF;
-		_uplink_payload.bytes[2] = temp >> 8;
-		_uplink_payload.bytes[3] = temp & 0xFF;
-		_uplink_payload.bytes[4] = co2_ppm >> 8;
-		_uplink_payload.bytes[5] = co2_ppm & 0xFF;
-
-		led_short_puls(led_ST4);  // OPTIONAL
-		printf("Upload Message >%s<\n", lora_driver_map_return_code_to_text(lora_driver_sent_upload_message(true, &_uplink_payload)));
 	}
 }

@@ -1,12 +1,13 @@
 /**
 \file
-\brief Driver for the TSL2591 Light sensor.
 
 \author Ib Havn
 \version 1.0.0
 
 \defgroup tsl2591_driver Driver for TSL2591 Light sensor
 \{
+\brief Driver for the TSL2591 Light sensor.
+
 A little about light. Light is normally measured in LUX.
 Indoor and outdoor light conditions:
 | LUX | Condition |

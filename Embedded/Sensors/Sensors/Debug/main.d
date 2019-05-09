@@ -30,7 +30,11 @@ main.d main.o: .././main.c \
  ../../../Iot\ driver\ Library/ihal.h ../FreeRTOS/src/task.h \
  ../FreeRTOS/src/semphr.h ../FreeRTOS/src/queue.h \
  ../FreeRTOS/src/timers.h ../../../Iot\ driver\ Library/hcSr501.h \
- ../../../stdio/stdio_driver.h ../../../Iot\ driver\ Library/hih8120.h
+ ../../../stdio/stdio_driver.h ../../../Iot\ driver\ Library/hih8120.h \
+ .././Headers/m_lora_includes.h \
+ ../../../Iot\ driver\ Library/lora_driver.h \
+ ../../../Iot\ driver\ Library/iled.h \
+ ../../../Iot\ driver\ Library/ihal.h
 
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stddef.h:
 
@@ -113,3 +117,11 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\
 ../../../stdio/stdio_driver.h:
 
 ../../../Iot\ driver\ Library/hih8120.h:
+
+.././Headers/m_lora_includes.h:
+
+../../../Iot\ driver\ Library/lora_driver.h:
+
+../../../Iot\ driver\ Library/iled.h:
+
+../../../Iot\ driver\ Library/ihal.h:

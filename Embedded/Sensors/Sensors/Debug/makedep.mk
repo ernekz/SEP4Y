@@ -6,7 +6,13 @@ CO2Task.c
 
 LEDTask.c
 
-LoraHandler.c
+Setup\lora_handler_create.c
+
+Setup\lora_setup.c
+
+Setup\driver_init.c
+
+Tasks\lora_handler_task.c
 
 TemperatureTask.c
 
