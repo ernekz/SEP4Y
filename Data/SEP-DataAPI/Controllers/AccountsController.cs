@@ -23,7 +23,7 @@ namespace SEP_DataAPI.Controllers
         // GET: api/Accounts
         [HttpGet]
         public IEnumerable<Account> GetAccounts()
-        {
+        {       
             return _context.Accounts;
         }
 

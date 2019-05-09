@@ -10,7 +10,7 @@ namespace SEP_DataAPI.Model
             Facts = new HashSet<Fact>();
         }
 
-        public int SensorsId { get; set; }
+        public int SensorId { get; set; }
 
         public virtual ICollection<Fact> Facts { get; set; }
     }
