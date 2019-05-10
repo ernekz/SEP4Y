@@ -27,7 +27,7 @@ namespace SEP_DataAPI.Controllers
             var result = _context.Facts.GroupBy(x => x.RoomId)
                         .Select(x => x.OrderByDescending(y => y.DateId)
                         .OrderByDescending(z => z.TimeId).First());
-
+            //pull data out of every dim table to create a EnvironmentalData object
             foreach (var x in result)
             {
                 string roomName = _context.RoomDim.Find(x.RoomId).Name;
@@ -66,22 +66,5 @@ namespace SEP_DataAPI.Controllers
             return data;
         }
 
-        // POST api/values
-        [HttpPost]
-        public void Post([FromBody] string value)
-        {         
-        }
-
-        // PUT api/values/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE api/values/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
     }
 }

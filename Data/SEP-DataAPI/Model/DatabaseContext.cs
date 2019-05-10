@@ -37,7 +37,7 @@ namespace SEP_DataAPI.Model
 
             modelBuilder.Entity<DateDim>(entity =>
             {
-            //    entity.HasKey(e => e.DimId);
+                entity.HasKey(e => e.DimId);
 
                 entity.ToTable("Date_Dim");
 
@@ -60,7 +60,7 @@ namespace SEP_DataAPI.Model
 
             modelBuilder.Entity<Fact>(entity =>
             {
-               // entity.HasKey(e => e.FactId);
+                entity.HasKey(e => e.FactId);
 
                 entity.Property(e => e.FactId).HasColumnName("Fact_ID");
 
@@ -107,7 +107,7 @@ namespace SEP_DataAPI.Model
 
             modelBuilder.Entity<RoomDim>(entity =>
             {
-                //entity.HasKey(e => e.RoomId);
+                entity.HasKey(e => e.RoomId);
                 entity.ToTable("Room_Dim");
 
                 entity.Property(e => e.RoomId).HasColumnName("Room_ID");
@@ -121,7 +121,7 @@ namespace SEP_DataAPI.Model
 
             modelBuilder.Entity<SensorDim>(entity =>
             {
-               // entity.HasKey(e => e.SensorId);
+                entity.HasKey(e => e.SensorId);
 
                 entity.ToTable("Sensor_Dim");
 
