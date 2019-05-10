@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
@@ -36,7 +37,7 @@ namespace SEP_DataAPI.Model
 
             modelBuilder.Entity<DateDim>(entity =>
             {
-                entity.HasKey(e => e.DimId);
+            //    entity.HasKey(e => e.DimId);
 
                 entity.ToTable("Date_Dim");
 
@@ -59,17 +60,17 @@ namespace SEP_DataAPI.Model
 
             modelBuilder.Entity<Fact>(entity =>
             {
-                entity.HasKey(e => e.FactId);
+               // entity.HasKey(e => e.FactId);
 
                 entity.Property(e => e.FactId).HasColumnName("Fact_ID");
 
-                entity.Property(e => e.DimId).HasColumnName("Dim_ID");
+                entity.Property(e => e.DateId).HasColumnName("Date_ID");
 
                 entity.Property(e => e.TimeId).HasColumnName("Time_ID");
 
                 entity.Property(e => e.RoomId).HasColumnName("Room_ID");
 
-                entity.Property(e => e.SensorsId).HasColumnName("Sensors_ID");
+                entity.Property(e => e.SensorId).HasColumnName("Sensor_ID");
                 
                 entity.Property(e => e.Co2)
                     .HasColumnName("CO2")
@@ -79,9 +80,9 @@ namespace SEP_DataAPI.Model
 
                 entity.Property(e => e.TempF).HasColumnName("Temp_f");
 
-                entity.HasOne(d => d.Dim)
+                entity.HasOne(d => d.Date)
                     .WithMany(p => p.Facts)
-                    .HasForeignKey(d => d.DimId)
+                    .HasForeignKey(d => d.DateId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_Facts_Date_Dim");
 
@@ -91,9 +92,9 @@ namespace SEP_DataAPI.Model
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_Facts_Room_Dim");
 
-                entity.HasOne(d => d.Sensors)
+                entity.HasOne(d => d.Sensor)
                     .WithMany(p => p.Facts)
-                    .HasForeignKey(d => d.SensorsId)
+                    .HasForeignKey(d => d.SensorId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_Facts_Sensor_Dim");
 
@@ -106,8 +107,7 @@ namespace SEP_DataAPI.Model
 
             modelBuilder.Entity<RoomDim>(entity =>
             {
-                entity.HasKey(e => e.RoomId);
-
+                //entity.HasKey(e => e.RoomId);
                 entity.ToTable("Room_Dim");
 
                 entity.Property(e => e.RoomId).HasColumnName("Room_ID");
@@ -121,11 +121,11 @@ namespace SEP_DataAPI.Model
 
             modelBuilder.Entity<SensorDim>(entity =>
             {
-                entity.HasKey(e => e.SensorsId);
+               // entity.HasKey(e => e.SensorId);
 
                 entity.ToTable("Sensor_Dim");
 
-                entity.Property(e => e.SensorsId).HasColumnName("Sensors_ID");
+                entity.Property(e => e.SensorId).HasColumnName("Sensors_ID");
 
             });
 

@@ -31,7 +31,8 @@ namespace SEP_DataAPI.Migrations
                         .HasColumnName("password")
                         .HasMaxLength(50);
 
-                    b.Property<bool>("isAdmin");
+                    b.Property<bool>("isAdmin")
+                        .HasColumnName("isAdmin");
 
                     b.HasKey("Username");
 
@@ -48,17 +49,23 @@ namespace SEP_DataAPI.Migrations
                     b.Property<DateTime>("Date")
                         .HasColumnType("date");
 
+                    b.Property<int>("Day")
+                        .HasColumnName("Day");
+
                     b.Property<string>("DayOfWeek")
                         .IsRequired()
                         .HasMaxLength(10);
 
-                    b.Property<int>("Month");
+                    b.Property<int>("Month")
+                        .HasColumnName("Month");
 
-                    b.Property<int>("Quarter");
+                    b.Property<int>("Quarter")
+                        .HasColumnName("Quarter");
 
                     b.Property<int>("Week");
 
-                    b.Property<int>("Year");
+                    b.Property<int>("Year")
+                        .HasColumnName("Year");
 
                     b.HasKey("DimId");
 
@@ -72,24 +79,37 @@ namespace SEP_DataAPI.Migrations
                         .HasColumnName("Fact_ID")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("DimId")
-                        .HasColumnName("Dim_ID");
+                    b.Property<decimal?>("Co2")
+                        .HasColumnName("CO2")
+                        .HasColumnType("decimal(10, 2)");
+
+                    b.Property<int>("DateId")
+                        .HasColumnName("Date_ID");
 
                     b.Property<int>("RoomId")
                         .HasColumnName("Room_ID");
 
-                    b.Property<int>("SensorsId")
-                        .HasColumnName("Sensors_ID");
+                    b.Property<int>("SensorId")
+                        .HasColumnName("Sensor_ID");
 
-                    b.Property<int?>("Timespan");
+                    b.Property<double?>("TempC")
+                        .HasColumnName("Temp_c");
+
+                    b.Property<double?>("TempF")
+                        .HasColumnName("Temp_f");
+
+                    b.Property<int>("TimeId")
+                        .HasColumnName("Time_ID");
 
                     b.HasKey("FactId");
 
-                    b.HasIndex("DimId");
+                    b.HasIndex("DateId");
 
                     b.HasIndex("RoomId");
 
-                    b.HasIndex("SensorsId");
+                    b.HasIndex("SensorId");
+
+                    b.HasIndex("TimeId");
 
                     b.ToTable("Facts");
                 });
@@ -104,7 +124,7 @@ namespace SEP_DataAPI.Migrations
                     b.Property<DateTime?>("DataCreated")
                         .HasColumnType("datetime");
 
-                    b.Property<string>("Teacher")
+                    b.Property<string>("Name")
                         .HasMaxLength(50)
                         .IsUnicode(false);
 
@@ -115,31 +135,45 @@ namespace SEP_DataAPI.Migrations
 
             modelBuilder.Entity("SEP_DataAPI.Model.SensorDim", b =>
                 {
-                    b.Property<int>("SensorsId")
+                    b.Property<int>("SensorId")
                         .ValueGeneratedOnAdd()
                         .HasColumnName("Sensors_ID")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<decimal?>("Co2")
-                        .HasColumnName("CO2")
-                        .HasColumnType("decimal(10, 2)");
-
-                    b.Property<double?>("TempC")
-                        .HasColumnName("Temp_c");
-
-                    b.Property<double?>("TempF")
-                        .HasColumnName("Temp_f");
-
-                    b.HasKey("SensorsId");
+                    b.HasKey("SensorId");
 
                     b.ToTable("Sensor_Dim");
                 });
 
+            modelBuilder.Entity("SEP_DataAPI.Model.TimeDim", b =>
+                {
+                    b.Property<int>("TimeId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnName("Dim_ID")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("Hour")
+                        .HasColumnName("Hour");
+
+                    b.Property<int>("Minute")
+                        .HasColumnName("Minute");
+
+                    b.Property<int>("Second")
+                        .HasColumnName("Second");
+
+                    b.Property<TimeSpan>("Time")
+                        .HasColumnType("time");
+
+                    b.HasKey("TimeId");
+
+                    b.ToTable("Time_Dim");
+                });
+
             modelBuilder.Entity("SEP_DataAPI.Model.Fact", b =>
                 {
-                    b.HasOne("SEP_DataAPI.Model.DateDim", "Dim")
+                    b.HasOne("SEP_DataAPI.Model.DateDim", "Date")
                         .WithMany("Facts")
-                        .HasForeignKey("DimId")
+                        .HasForeignKey("DateId")
                         .HasConstraintName("FK_Facts_Date_Dim");
 
                     b.HasOne("SEP_DataAPI.Model.RoomDim", "Room")
@@ -147,10 +181,15 @@ namespace SEP_DataAPI.Migrations
                         .HasForeignKey("RoomId")
                         .HasConstraintName("FK_Facts_Room_Dim");
 
-                    b.HasOne("SEP_DataAPI.Model.SensorDim", "Sensors")
+                    b.HasOne("SEP_DataAPI.Model.SensorDim", "Sensor")
                         .WithMany("Facts")
-                        .HasForeignKey("SensorsId")
+                        .HasForeignKey("SensorId")
                         .HasConstraintName("FK_Facts_Sensor_Dim");
+
+                    b.HasOne("SEP_DataAPI.Model.TimeDim", "Time")
+                        .WithMany("Facts")
+                        .HasForeignKey("TimeId")
+                        .HasConstraintName("FK_Facts_Time_Dim");
                 });
 #pragma warning restore 612, 618
         }
