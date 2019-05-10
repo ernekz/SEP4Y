@@ -36,10 +36,10 @@ int main(void)
 	
 	sei(); // enables interrupts
 	
-	if ( HIH8120_OK == hih8120Create() )
+	/*if ( HIH8120_OK == hih8120Create() )
 	{
 		printf("Driver created.\n");
-	}
+	}*/
 	
 	//mh_z19_create(ser_USART3, my_co2_call_back); 
 	//xMutex = xSemaphoreCreateMutex();

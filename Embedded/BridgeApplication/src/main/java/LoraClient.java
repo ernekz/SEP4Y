@@ -40,7 +40,9 @@ public class LoraClient implements WebSocket.Listener {
         return new CompletableFuture().completedFuture("Pong completed.").thenAccept(System.out::println);
     }
     public CompletionStage<?> onText(WebSocket webSocket, CharSequence data, boolean least) {
+        System.out.println("First");
         System.out.println(data);
+        System.out.println("Second");
         webSocket.request(1);
         return new CompletableFuture().completedFuture("onText() completed.").thenAccept(System.out::println);
     }
