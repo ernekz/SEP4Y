@@ -4,8 +4,8 @@
 #include <lora_driver.h>
 #include <iled.h>
 
-#define LORA_appEUI "4203716466d93a07"
-#define LORA_appKEY "7dc57c5406c0882d3a4d5a9ed7ae5c6f"
+#define LORA_appEUI "7933b719938849c4"
+#define LORA_appKEY "d4bf3a8e5dd4e7867d983f79f09300ec"
 
 static char _out_buf[100];
 

@@ -6,10 +6,19 @@ import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.CompletionStage;
 
 public class LoraClient implements WebSocket.Listener {
+    static int temperature;
+    static int co2;
+    String jsonMessage;
+
+    MongoDB mongoDB= new MongoDB();
+
 
     public LoraClient(){
         HttpClient client = HttpClient.newHttpClient();
-        CompletableFuture<WebSocket> webSocket = client.newWebSocketBuilder().buildAsync(URI.create("wss://iotnet.teracom.dk/app?token=vnoRlAAAABFpb3RuZXQudGVyYWNvbS5kay68arsawh5bptw7waIoimg="), this);
+        temperature=0;
+        co2=0;
+        jsonMessage="";
+        CompletableFuture<WebSocket> webSocket = client.newWebSocketBuilder().buildAsync(URI.create("wss://iotnet.teracom.dk/app?token=vnoRoQAAABFpb3RuZXQudGVyYWNvbS5kazdq6klI6RmA9s7aH5ya0Eo="), this);
         System.out.println("LoraClient created.");
     }
     public void onOpen(WebSocket webSocket) {
@@ -40,10 +49,21 @@ public class LoraClient implements WebSocket.Listener {
         return new CompletableFuture().completedFuture("Pong completed.").thenAccept(System.out::println);
     }
     public CompletionStage<?> onText(WebSocket webSocket, CharSequence data, boolean least) {
-        System.out.println("First");
+        jsonMessage=data.toString();
         System.out.println(data);
-        System.out.println("Second");
+        getTemperature(jsonMessage);
+        getCo2(jsonMessage);
+        mongoDB.insertNewDocument("BridgeAppSampleData", temperature, co2);
         webSocket.request(1);
+
         return new CompletableFuture().completedFuture("onText() completed.").thenAccept(System.out::println);
     }
+
+    public void getTemperature(CharSequence jsonMessage){
+        temperature=Integer.parseInt(jsonMessage.toString().substring(116, 120));
+    }
+    public void getCo2(CharSequence jsonMessage){
+        co2=Integer.parseInt(jsonMessage.toString().substring(120, 124));
+    }
+
 }

@@ -1774,29 +1774,29 @@ END GROUP
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000     0xbf7b
+.debug_info     0x00000000     0xbf7c
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x00000000      0xbbc C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega2560/avr6/crtatmega2560.o
- .debug_info    0x00000bbc      0x6f1 LoraHandler.o
- .debug_info    0x000012ad       0xd3 FreeRTOS/FreeRTOSTraceDriver/FreeRTOSTraceDriver.o
- .debug_info    0x00001380      0x19f FreeRTOS/src/heap_3.o
- .debug_info    0x0000151f      0x2df FreeRTOS/src/list.o
- .debug_info    0x000017fe      0x284 FreeRTOS/src/port.o
- .debug_info    0x00001a82     0x18fc FreeRTOS/src/queue.o
- .debug_info    0x0000337e     0x14b9 FreeRTOS/src/stream_buffer.o
- .debug_info    0x00004837     0x27ae FreeRTOS/src/tasks.o
- .debug_info    0x00006fe5     0x1077 FreeRTOS/src/timers.o
- .debug_info    0x0000805c      0x1ba FreeRTOS/src/variantHooks.o
- .debug_info    0x00008216      0x16f main.o
- .debug_info    0x00008385      0x39c ../../../stdio\libserialLib.a(stdio_driver.o)
- .debug_info    0x00008721      0xdb3 ../../../stdio\libserialLib.a(serial.o)
- .debug_info    0x000094d4      0x1c3 ../../../stdio\libserialLib.a(fifo.o)
- .debug_info    0x00009697      0x20d ../../../Iot driver Library\libIotLibrary.a(hal.o)
- .debug_info    0x000098a4      0x6f9 ../../../Iot driver Library\libIotLibrary.a(led.o)
- .debug_info    0x00009f9d     0x165d ../../../Iot driver Library\libIotLibrary.a(lora_driver.o)
- .debug_info    0x0000b5fa      0x143 ../../../Iot driver Library\libIotLibrary.a(lora_driver_utils.o)
- .debug_info    0x0000b73d      0x2e1 ../../../Iot driver Library\libIotLibrary.a(mega_register_access.o)
- .debug_info    0x0000ba1e      0x55d ../../../Iot driver Library\libIotLibrary.a(twi.o)
+ .debug_info    0x00000bbc      0x6f2 LoraHandler.o
+ .debug_info    0x000012ae       0xd3 FreeRTOS/FreeRTOSTraceDriver/FreeRTOSTraceDriver.o
+ .debug_info    0x00001381      0x19f FreeRTOS/src/heap_3.o
+ .debug_info    0x00001520      0x2df FreeRTOS/src/list.o
+ .debug_info    0x000017ff      0x284 FreeRTOS/src/port.o
+ .debug_info    0x00001a83     0x18fc FreeRTOS/src/queue.o
+ .debug_info    0x0000337f     0x14b9 FreeRTOS/src/stream_buffer.o
+ .debug_info    0x00004838     0x27ae FreeRTOS/src/tasks.o
+ .debug_info    0x00006fe6     0x1077 FreeRTOS/src/timers.o
+ .debug_info    0x0000805d      0x1ba FreeRTOS/src/variantHooks.o
+ .debug_info    0x00008217      0x16f main.o
+ .debug_info    0x00008386      0x39c ../../../stdio\libserialLib.a(stdio_driver.o)
+ .debug_info    0x00008722      0xdb3 ../../../stdio\libserialLib.a(serial.o)
+ .debug_info    0x000094d5      0x1c3 ../../../stdio\libserialLib.a(fifo.o)
+ .debug_info    0x00009698      0x20d ../../../Iot driver Library\libIotLibrary.a(hal.o)
+ .debug_info    0x000098a5      0x6f9 ../../../Iot driver Library\libIotLibrary.a(led.o)
+ .debug_info    0x00009f9e     0x165d ../../../Iot driver Library\libIotLibrary.a(lora_driver.o)
+ .debug_info    0x0000b5fb      0x143 ../../../Iot driver Library\libIotLibrary.a(lora_driver_utils.o)
+ .debug_info    0x0000b73e      0x2e1 ../../../Iot driver Library\libIotLibrary.a(mega_register_access.o)
+ .debug_info    0x0000ba1f      0x55d ../../../Iot driver Library\libIotLibrary.a(twi.o)
 
 .debug_abbrev   0x00000000     0x2eef
  *(.debug_abbrev)
