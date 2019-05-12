@@ -1,4 +1,6 @@
-TemperatureTask.d TemperatureTask.o: .././TemperatureTask.c \
+Callbacks/read_timer_callback.d Callbacks/read_timer_callback.o: \
+ ../Callbacks/read_timer_callback.c \
+ ../Callbacks/../Headers/m_lora_includes.h \
  ../FreeRTOS/src/ATMEGA_FreeRTOS.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stddef.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stdint.h \
@@ -19,12 +21,27 @@ TemperatureTask.d TemperatureTask.o: .././TemperatureTask.c \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\wdt.h \
  ../FreeRTOS/src/mpu_wrappers.h ../FreeRTOS/src/FreeRTOSVariant.h \
  ../FreeRTOS/src/ATMEGA_FreeRTOS.h ../FreeRTOS/src/task.h \
- ../FreeRTOS/src/list.h ../../../Iot\ driver\ Library/hih8120.h \
- c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stdbool.h \
- ../../../stdio/stdio_driver.h \
+ ../FreeRTOS/src/list.h ../FreeRTOS/src/task.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\stdio.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stdarg.h \
- ../FreeRTOS/src/task.h
+ ../../../stdio/stdio_driver.h \
+ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stdbool.h \
+ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\interrupt.h \
+ ../../../Iot\ driver\ Library/ihal.h \
+ ../../../Iot\ driver\ Library/lora_driver.h \
+ ../../../Iot\ driver\ Library/serial.h \
+ ../../../Iot\ driver\ Library/iled.h \
+ ../../../Iot\ driver\ Library/ihal.h \
+ ../../../Iot\ driver\ Library/hih8120.h \
+ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay.h \
+ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay_basic.h \
+ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\math.h \
+ ../../../Iot\ driver\ Library/mh_z19.h ../FreeRTOS/src/semphr.h \
+ ../FreeRTOS/src/queue.h ../FreeRTOS/src/timers.h \
+ ../../../Iot\ driver\ Library/hcSr501.h ../FreeRTOS/src/message_buffer.h \
+ ../FreeRTOS/src/stream_buffer.h
+
+../Callbacks/../Headers/m_lora_includes.h:
 
 ../FreeRTOS/src/ATMEGA_FreeRTOS.h:
 
@@ -74,14 +91,46 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\
 
 ../FreeRTOS/src/list.h:
 
-../../../Iot\ driver\ Library/hih8120.h:
-
-c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stdbool.h:
-
-../../../stdio/stdio_driver.h:
+../FreeRTOS/src/task.h:
 
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\stdio.h:
 
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stdarg.h:
 
-../FreeRTOS/src/task.h:
+../../../stdio/stdio_driver.h:
+
+c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stdbool.h:
+
+c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\interrupt.h:
+
+../../../Iot\ driver\ Library/ihal.h:
+
+../../../Iot\ driver\ Library/lora_driver.h:
+
+../../../Iot\ driver\ Library/serial.h:
+
+../../../Iot\ driver\ Library/iled.h:
+
+../../../Iot\ driver\ Library/ihal.h:
+
+../../../Iot\ driver\ Library/hih8120.h:
+
+c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay.h:
+
+c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay_basic.h:
+
+c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\math.h:
+
+../../../Iot\ driver\ Library/mh_z19.h:
+
+../FreeRTOS/src/semphr.h:
+
+../FreeRTOS/src/queue.h:
+
+../FreeRTOS/src/timers.h:
+
+../../../Iot\ driver\ Library/hcSr501.h:
+
+../FreeRTOS/src/message_buffer.h:
+
+../FreeRTOS/src/stream_buffer.h:

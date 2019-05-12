@@ -31,7 +31,14 @@ Tasks/lora_handler_task.d Tasks/lora_handler_task.o: \
  ../../../Iot\ driver\ Library/serial.h \
  ../../../Iot\ driver\ Library/iled.h \
  ../../../Iot\ driver\ Library/ihal.h \
- ../../../Iot\ driver\ Library/hih8120.h
+ ../../../Iot\ driver\ Library/hih8120.h \
+ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay.h \
+ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay_basic.h \
+ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\math.h \
+ ../../../Iot\ driver\ Library/mh_z19.h ../FreeRTOS/src/semphr.h \
+ ../FreeRTOS/src/queue.h ../FreeRTOS/src/timers.h \
+ ../../../Iot\ driver\ Library/hcSr501.h ../FreeRTOS/src/message_buffer.h \
+ ../FreeRTOS/src/stream_buffer.h
 
 ../Tasks/../Headers/m_lora_includes.h:
 
@@ -106,3 +113,23 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\
 ../../../Iot\ driver\ Library/ihal.h:
 
 ../../../Iot\ driver\ Library/hih8120.h:
+
+c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay.h:
+
+c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay_basic.h:
+
+c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\math.h:
+
+../../../Iot\ driver\ Library/mh_z19.h:
+
+../FreeRTOS/src/semphr.h:
+
+../FreeRTOS/src/queue.h:
+
+../FreeRTOS/src/timers.h:
+
+../../../Iot\ driver\ Library/hcSr501.h:
+
+../FreeRTOS/src/message_buffer.h:
+
+../FreeRTOS/src/stream_buffer.h:

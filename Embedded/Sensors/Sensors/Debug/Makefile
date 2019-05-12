@@ -38,19 +38,27 @@ SUBDIRS :=  \
 ../FreeRTOS/FreeRTOSTraceDriver/ \
 ../FreeRTOS/src/ \
 ../Headers \
+../Callbacks \
 ../Setup \
 ../Tasks
 
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS +=  \
-../CO2Task.c \
-../LEDTask.c \
-../Setup/lora_handler_create.c \
+../Callbacks/measure_co2_callback.c \
+../Callbacks/measure_co2_timer_callback.c \
+../Callbacks/print_co2_timer_callback.c \
+../Callbacks/print_temp_timer_callback.c \
+../Callbacks/measure_temp_timer_callback.c \
+../Setup/create_all_tasks.c \
+../Setup/create_all_timers.c \
 ../Setup/lora_setup.c \
 ../Setup/driver_init.c \
 ../Tasks/lora_handler_task.c \
-../TemperatureTask.c \
+../Tasks/measure_co2_task.c \
+../Tasks/measure_temp_task.c \
+../Tasks/print_co2_task.c \
+../Tasks/print_temp_task.c \
 ../FreeRTOS/FreeRTOSTraceDriver/FreeRTOSTraceDriver.c \
 ../FreeRTOS/src/croutine.c \
 ../FreeRTOS/src/event_groups.c \
@@ -72,13 +80,20 @@ ASM_SRCS +=
 
 
 OBJS +=  \
-CO2Task.o \
-LEDTask.o \
-Setup/lora_handler_create.o \
+Callbacks/measure_co2_callback.o \
+Callbacks/measure_co2_timer_callback.o \
+Callbacks/print_co2_timer_callback.o \
+Callbacks/print_temp_timer_callback.o \
+Callbacks/measure_temp_timer_callback.o \
+Setup/create_all_tasks.o \
+Setup/create_all_timers.o \
 Setup/lora_setup.o \
 Setup/driver_init.o \
 Tasks/lora_handler_task.o \
-TemperatureTask.o \
+Tasks/measure_co2_task.o \
+Tasks/measure_temp_task.o \
+Tasks/print_co2_task.o \
+Tasks/print_temp_task.o \
 FreeRTOS/FreeRTOSTraceDriver/FreeRTOSTraceDriver.o \
 FreeRTOS/src/croutine.o \
 FreeRTOS/src/event_groups.o \
@@ -93,13 +108,20 @@ FreeRTOS/src/variantHooks.o \
 main.o
 
 OBJS_AS_ARGS +=  \
-CO2Task.o \
-LEDTask.o \
-Setup/lora_handler_create.o \
+Callbacks/measure_co2_callback.o \
+Callbacks/measure_co2_timer_callback.o \
+Callbacks/print_co2_timer_callback.o \
+Callbacks/print_temp_timer_callback.o \
+Callbacks/measure_temp_timer_callback.o \
+Setup/create_all_tasks.o \
+Setup/create_all_timers.o \
 Setup/lora_setup.o \
 Setup/driver_init.o \
 Tasks/lora_handler_task.o \
-TemperatureTask.o \
+Tasks/measure_co2_task.o \
+Tasks/measure_temp_task.o \
+Tasks/print_co2_task.o \
+Tasks/print_temp_task.o \
 FreeRTOS/FreeRTOSTraceDriver/FreeRTOSTraceDriver.o \
 FreeRTOS/src/croutine.o \
 FreeRTOS/src/event_groups.o \
@@ -114,13 +136,20 @@ FreeRTOS/src/variantHooks.o \
 main.o
 
 C_DEPS +=  \
-CO2Task.d \
-LEDTask.d \
-Setup/lora_handler_create.d \
+Callbacks/measure_co2_callback.d \
+Callbacks/measure_co2_timer_callback.d \
+Callbacks/print_co2_timer_callback.d \
+Callbacks/print_temp_timer_callback.d \
+Callbacks/measure_temp_timer_callback.d \
+Setup/create_all_tasks.d \
+Setup/create_all_timers.d \
 Setup/lora_setup.d \
 Setup/driver_init.d \
 Tasks/lora_handler_task.d \
-TemperatureTask.d \
+Tasks/measure_co2_task.d \
+Tasks/measure_temp_task.d \
+Tasks/print_co2_task.d \
+Tasks/print_temp_task.d \
 FreeRTOS/FreeRTOSTraceDriver/FreeRTOSTraceDriver.d \
 FreeRTOS/src/croutine.d \
 FreeRTOS/src/event_groups.d \
@@ -135,13 +164,20 @@ FreeRTOS/src/variantHooks.d \
 main.d
 
 C_DEPS_AS_ARGS +=  \
-CO2Task.d \
-LEDTask.d \
-Setup/lora_handler_create.d \
+Callbacks/measure_co2_callback.d \
+Callbacks/measure_co2_timer_callback.d \
+Callbacks/print_co2_timer_callback.d \
+Callbacks/print_temp_timer_callback.d \
+Callbacks/measure_temp_timer_callback.d \
+Setup/create_all_tasks.d \
+Setup/create_all_timers.d \
 Setup/lora_setup.d \
 Setup/driver_init.d \
 Tasks/lora_handler_task.d \
-TemperatureTask.d \
+Tasks/measure_co2_task.d \
+Tasks/measure_temp_task.d \
+Tasks/print_co2_task.d \
+Tasks/print_temp_task.d \
 FreeRTOS/FreeRTOSTraceDriver/FreeRTOSTraceDriver.d \
 FreeRTOS/src/croutine.d \
 FreeRTOS/src/event_groups.d \
@@ -169,21 +205,49 @@ LINKER_SCRIPT_DEP+=
 
 
 # AVR32/GNU C Compiler
-./CO2Task.o: .././CO2Task.c
+Callbacks/measure_co2_callback.o: ../Callbacks/measure_co2_callback.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
 	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DF_CPU=16000000  -I"../../../stdio" -I"../FreeRTOS/src" -I"../../../Iot driver Library" -I"../Headers" -I"../Tasks" -I"../Setup"  -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g2 -Wall -mmcu=atmega2560 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\gcc\dev\atmega2560" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
-./LEDTask.o: .././LEDTask.c
+Callbacks/measure_co2_timer_callback.o: ../Callbacks/measure_co2_timer_callback.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
 	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DF_CPU=16000000  -I"../../../stdio" -I"../FreeRTOS/src" -I"../../../Iot driver Library" -I"../Headers" -I"../Tasks" -I"../Setup"  -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g2 -Wall -mmcu=atmega2560 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\gcc\dev\atmega2560" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
-Setup/lora_handler_create.o: ../Setup/lora_handler_create.c
+Callbacks/print_co2_timer_callback.o: ../Callbacks/print_co2_timer_callback.c
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU C Compiler : 5.4.0
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DF_CPU=16000000  -I"../../../stdio" -I"../FreeRTOS/src" -I"../../../Iot driver Library" -I"../Headers" -I"../Tasks" -I"../Setup"  -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g2 -Wall -mmcu=atmega2560 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\gcc\dev\atmega2560" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+Callbacks/print_temp_timer_callback.o: ../Callbacks/print_temp_timer_callback.c
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU C Compiler : 5.4.0
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DF_CPU=16000000  -I"../../../stdio" -I"../FreeRTOS/src" -I"../../../Iot driver Library" -I"../Headers" -I"../Tasks" -I"../Setup"  -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g2 -Wall -mmcu=atmega2560 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\gcc\dev\atmega2560" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+Callbacks/measure_temp_timer_callback.o: ../Callbacks/measure_temp_timer_callback.c
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU C Compiler : 5.4.0
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DF_CPU=16000000  -I"../../../stdio" -I"../FreeRTOS/src" -I"../../../Iot driver Library" -I"../Headers" -I"../Tasks" -I"../Setup"  -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g2 -Wall -mmcu=atmega2560 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\gcc\dev\atmega2560" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+Setup/create_all_tasks.o: ../Setup/create_all_tasks.c
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU C Compiler : 5.4.0
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DF_CPU=16000000  -I"../../../stdio" -I"../FreeRTOS/src" -I"../../../Iot driver Library" -I"../Headers" -I"../Tasks" -I"../Setup"  -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g2 -Wall -mmcu=atmega2560 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\gcc\dev\atmega2560" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+Setup/create_all_timers.o: ../Setup/create_all_timers.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
 	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DF_CPU=16000000  -I"../../../stdio" -I"../FreeRTOS/src" -I"../../../Iot driver Library" -I"../Headers" -I"../Tasks" -I"../Setup"  -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g2 -Wall -mmcu=atmega2560 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\gcc\dev\atmega2560" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
@@ -211,7 +275,28 @@ Tasks/lora_handler_task.o: ../Tasks/lora_handler_task.c
 	@echo Finished building: $<
 	
 
-./TemperatureTask.o: .././TemperatureTask.c
+Tasks/measure_co2_task.o: ../Tasks/measure_co2_task.c
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU C Compiler : 5.4.0
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DF_CPU=16000000  -I"../../../stdio" -I"../FreeRTOS/src" -I"../../../Iot driver Library" -I"../Headers" -I"../Tasks" -I"../Setup"  -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g2 -Wall -mmcu=atmega2560 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\gcc\dev\atmega2560" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+Tasks/measure_temp_task.o: ../Tasks/measure_temp_task.c
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU C Compiler : 5.4.0
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DF_CPU=16000000  -I"../../../stdio" -I"../FreeRTOS/src" -I"../../../Iot driver Library" -I"../Headers" -I"../Tasks" -I"../Setup"  -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g2 -Wall -mmcu=atmega2560 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\gcc\dev\atmega2560" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+Tasks/print_co2_task.o: ../Tasks/print_co2_task.c
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU C Compiler : 5.4.0
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DF_CPU=16000000  -I"../../../stdio" -I"../FreeRTOS/src" -I"../../../Iot driver Library" -I"../Headers" -I"../Tasks" -I"../Setup"  -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g2 -Wall -mmcu=atmega2560 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\gcc\dev\atmega2560" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+Tasks/print_temp_task.o: ../Tasks/print_temp_task.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
 	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DF_CPU=16000000  -I"../../../stdio" -I"../FreeRTOS/src" -I"../../../Iot driver Library" -I"../Headers" -I"../Tasks" -I"../Setup"  -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g2 -Wall -mmcu=atmega2560 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\gcc\dev\atmega2560" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 

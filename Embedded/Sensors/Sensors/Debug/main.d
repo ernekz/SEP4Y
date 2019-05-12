@@ -34,7 +34,8 @@ main.d main.o: .././main.c \
  .././Headers/m_lora_includes.h \
  ../../../Iot\ driver\ Library/lora_driver.h \
  ../../../Iot\ driver\ Library/iled.h \
- ../../../Iot\ driver\ Library/ihal.h
+ ../../../Iot\ driver\ Library/ihal.h ../FreeRTOS/src/message_buffer.h \
+ ../FreeRTOS/src/stream_buffer.h
 
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stddef.h:
 
@@ -125,3 +126,7 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\
 ../../../Iot\ driver\ Library/iled.h:
 
 ../../../Iot\ driver\ Library/ihal.h:
+
+../FreeRTOS/src/message_buffer.h:
+
+../FreeRTOS/src/stream_buffer.h:

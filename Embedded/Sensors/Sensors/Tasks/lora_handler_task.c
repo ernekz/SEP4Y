@@ -34,7 +34,7 @@ void lora_handler_task(void *pvParameters)
 
 	for(;;)
 	{
-		vTaskDelay(pdMS_TO_TICKS(5000UL));
+		vTaskDelay(10000/portTICK_PERIOD_MS);
 
 		// Some dummy payload
 		uint16_t hum = 12345; // Dummy humidity

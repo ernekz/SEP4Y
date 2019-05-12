@@ -46,7 +46,7 @@
     <com_atmel_avrdbg_tool_atmelice>
       <ToolOptions>
         <InterfaceProperties>
-          <JtagDbgClock>300000</JtagDbgClock>
+          <JtagDbgClock>200000</JtagDbgClock>
         </InterfaceProperties>
         <InterfaceName>JTAG</InterfaceName>
       </ToolOptions>
@@ -55,7 +55,7 @@
       <ToolName>Atmel-ICE</ToolName>
     </com_atmel_avrdbg_tool_atmelice>
     <avrtoolinterface>JTAG</avrtoolinterface>
-    <avrtoolinterfaceclock>300000</avrtoolinterfaceclock>
+    <avrtoolinterfaceclock>200000</avrtoolinterfaceclock>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
     <ToolchainSettings>
@@ -150,16 +150,28 @@
     </ToolchainSettings>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="CO2Task.c">
+    <Compile Include="Callbacks\measure_co2_callback.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Callbacks\measure_co2_timer_callback.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Callbacks\print_co2_timer_callback.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Callbacks\print_temp_timer_callback.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Callbacks\measure_temp_timer_callback.c">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="Headers\m_lora_includes.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="LEDTask.c">
+    <Compile Include="Setup\create_all_tasks.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="Setup\lora_handler_create.c">
+    <Compile Include="Setup\create_all_timers.c">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="Setup\lora_setup.c">
@@ -171,7 +183,16 @@
     <Compile Include="Tasks\lora_handler_task.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="TemperatureTask.c">
+    <Compile Include="Tasks\measure_co2_task.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Tasks\measure_temp_task.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Tasks\print_co2_task.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Tasks\print_temp_task.c">
       <SubType>compile</SubType>
     </Compile>
     <None Include="FreeRTOS\Example\main.c">
@@ -274,6 +295,7 @@
     <Folder Include="FreeRTOS\FreeRTOSTraceDriver\" />
     <Folder Include="FreeRTOS\src\" />
     <Folder Include="Headers" />
+    <Folder Include="Callbacks" />
     <Folder Include="Setup" />
     <Folder Include="Tasks" />
   </ItemGroup>

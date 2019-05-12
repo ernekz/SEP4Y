@@ -40,7 +40,7 @@ void lora_setup(void)
 	uint8_t maxJoinTriesLeft = 5;
 	do {
 		rc = lora_driver_join(LoRa_OTAA);
-		printf("Join Network TriesLeft:%d >%s<\n", maxJoinTriesLeft, lora_driver_map_return_code_to_text(rc));
+		printf("Join Network Tries Left:%d >%s<\n", maxJoinTriesLeft, lora_driver_map_return_code_to_text(rc));
 
 		if ( rc != LoRa_ACCEPTED)
 		{

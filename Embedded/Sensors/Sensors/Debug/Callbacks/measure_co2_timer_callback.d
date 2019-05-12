@@ -1,10 +1,11 @@
-CO2Task.d CO2Task.o: .././CO2Task.c \
- ../../../Iot\ driver\ Library/mh_z19.h \
- c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stdbool.h \
+Callbacks/measure_co2_timer_callback.d \
+ Callbacks/measure_co2_timer_callback.o: \
+ ../Callbacks/measure_co2_timer_callback.c \
+ ../Callbacks/../Headers/m_lora_includes.h \
+ ../FreeRTOS/src/ATMEGA_FreeRTOS.h \
+ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stddef.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stdint.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\stdint.h \
- ../../../Iot\ driver\ Library/serial.h ../FreeRTOS/src/ATMEGA_FreeRTOS.h \
- c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stddef.h \
  ../FreeRTOS/src/FreeRTOSConfig.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\io.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\sfr_defs.h \
@@ -21,27 +22,35 @@ CO2Task.d CO2Task.o: .././CO2Task.c \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\wdt.h \
  ../FreeRTOS/src/mpu_wrappers.h ../FreeRTOS/src/FreeRTOSVariant.h \
  ../FreeRTOS/src/ATMEGA_FreeRTOS.h ../FreeRTOS/src/task.h \
- ../FreeRTOS/src/list.h ../../../stdio/stdio_driver.h \
+ ../FreeRTOS/src/list.h ../FreeRTOS/src/task.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\stdio.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stdarg.h \
- ../FreeRTOS/src/timers.h ../FreeRTOS/src/semphr.h \
- ../FreeRTOS/src/queue.h \
+ ../../../stdio/stdio_driver.h \
+ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stdbool.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\interrupt.h \
- ../FreeRTOS/src/task.h
+ ../../../Iot\ driver\ Library/ihal.h \
+ ../../../Iot\ driver\ Library/lora_driver.h \
+ ../../../Iot\ driver\ Library/serial.h \
+ ../../../Iot\ driver\ Library/iled.h \
+ ../../../Iot\ driver\ Library/ihal.h \
+ ../../../Iot\ driver\ Library/hih8120.h \
+ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay.h \
+ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay_basic.h \
+ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\math.h \
+ ../../../Iot\ driver\ Library/mh_z19.h ../FreeRTOS/src/semphr.h \
+ ../FreeRTOS/src/queue.h ../FreeRTOS/src/timers.h \
+ ../../../Iot\ driver\ Library/hcSr501.h ../FreeRTOS/src/message_buffer.h \
+ ../FreeRTOS/src/stream_buffer.h
 
-../../../Iot\ driver\ Library/mh_z19.h:
-
-c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stdbool.h:
-
-c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stdint.h:
-
-c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\stdint.h:
-
-../../../Iot\ driver\ Library/serial.h:
+../Callbacks/../Headers/m_lora_includes.h:
 
 ../FreeRTOS/src/ATMEGA_FreeRTOS.h:
 
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stddef.h:
+
+c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stdint.h:
+
+c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\stdint.h:
 
 ../FreeRTOS/src/FreeRTOSConfig.h:
 
@@ -83,18 +92,46 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\
 
 ../FreeRTOS/src/list.h:
 
-../../../stdio/stdio_driver.h:
+../FreeRTOS/src/task.h:
 
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\stdio.h:
 
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stdarg.h:
 
-../FreeRTOS/src/timers.h:
+../../../stdio/stdio_driver.h:
+
+c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stdbool.h:
+
+c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\interrupt.h:
+
+../../../Iot\ driver\ Library/ihal.h:
+
+../../../Iot\ driver\ Library/lora_driver.h:
+
+../../../Iot\ driver\ Library/serial.h:
+
+../../../Iot\ driver\ Library/iled.h:
+
+../../../Iot\ driver\ Library/ihal.h:
+
+../../../Iot\ driver\ Library/hih8120.h:
+
+c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay.h:
+
+c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay_basic.h:
+
+c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\math.h:
+
+../../../Iot\ driver\ Library/mh_z19.h:
 
 ../FreeRTOS/src/semphr.h:
 
 ../FreeRTOS/src/queue.h:
 
-c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\interrupt.h:
+../FreeRTOS/src/timers.h:
 
-../FreeRTOS/src/task.h:
+../../../Iot\ driver\ Library/hcSr501.h:
+
+../FreeRTOS/src/message_buffer.h:
+
+../FreeRTOS/src/stream_buffer.h:
