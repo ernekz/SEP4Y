@@ -16,23 +16,22 @@
 
 
 
-void driver_init();
+void global_init();
 void create_all_tasks(UBaseType_t lora_handler_task_priority);
 void create_all_timers();
 
 int main(void)
 {			
-	driver_init();
+	global_init();
 	
 	create_all_tasks(LORA_HANDLER_TASK_PRIORITY);
 	
 	create_all_timers();
-	
-	
+
 	xTimerStart(xTimer_measure_temp,0);
-	xTimerStart(xTimer_read_temp,0);
 	xTimerStart(xTimer_measure_co2,0);
-	xTimerStart(xTimer_read_co2,0);
+	xTimerStart(xTimer_read_measurements,0);
+	xTimerStart(xTimer_send_data,0);
 					
 	vTaskStartScheduler();
 	

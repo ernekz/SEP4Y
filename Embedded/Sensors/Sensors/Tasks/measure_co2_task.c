@@ -11,9 +11,11 @@ void measure_co2_task(void *pvParameters)
 {
 	while (1)
 	{
+		xSemaphoreTake(xSemaphore,portMAX_DELAY);
+		
 		if (mh_z19_take_meassuring() != MHZ19_OK)
 		{
-			m_print("Error measuring CO2 value!\n",xSemaphore_co2);
+			m_print("Error measuring CO2 value!\n",xSemaphore_print);
 		}
 	}
 }

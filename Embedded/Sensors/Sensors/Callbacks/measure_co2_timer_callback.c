@@ -8,5 +8,5 @@
 
 void measure_co2_timer_callback(TimerHandle_t pxTimer)
 {
-	xSemaphoreGive(xSemaphore_co2);
+	xSemaphoreGive(xSemaphore);
 }

@@ -9,14 +9,14 @@
 
 void measure_co2_callback(uint16_t ppm)
 {
-	uint16_t value = ppm;
+	m_data co2 = {1, ppm};
 	
-	xMessageBufferSend( xMessageBuffer_co2
-					, &value
-					, sizeof (uint16_t)
+	xMessageBufferSend( xMessageBuffer
+					, &co2
+					, sizeof (m_data)
 					,0);
 	
-	xSemaphoreTake(xSemaphore_co2,portMAX_DELAY);
-	printf("Measured CO2 value %d sent!\n",value);
-	xSemaphoreGive(xSemaphore_co2);
+	xSemaphoreTake(xSemaphore_print,portMAX_DELAY);
+	printf("CO2 (type: %d, val: %u) sent!\n", co2.type, (unsigned int)co2.value);
+	xSemaphoreGive(xSemaphore_print);
 }

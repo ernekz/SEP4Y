@@ -9,39 +9,40 @@
 
 void measure_temp_task(void *pvParameters)
 {
-	int temperature = 0;
+	m_data temperature = {2, 0};
 	
 	while (1)
 	{
-		xSemaphoreTake(xSemaphore_temp,portMAX_DELAY);
+		xSemaphoreTake(xSemaphore,portMAX_DELAY);
 		
 		if ( HIH8120_OK != hih8120Wakeup() )
 		{
-			m_print("Error in waking up the censors!",xSemaphore_temp);
+			m_print("Error in waking up the sensors!",xSemaphore_print);
 		}
 		
-		vTaskDelay(50/portTICK_PERIOD_MS);
+		vTaskDelay(100/portTICK_PERIOD_MS);
 		
 	
 		if ( HIH8120_OK !=  hih8120Meassure() )
 		{
-			m_print("Error in measuring the temperature!",xSemaphore_temp);			
+			m_print("Error in measuring the temperature!",xSemaphore_print);			
 		}
 		else
 		{	
-			vTaskDelay(100/portTICK_PERIOD_MS);
-			temperature = hih8120GetTemperature_x10();
+			vTaskDelay(300/portTICK_PERIOD_MS);
+			temperature.value = hih8120GetTemperature_x10();
 				
-			xSemaphoreTake(xSemaphore_temp,portMAX_DELAY);
-			printf("Temperature %d sent!\n", temperature);
-			xSemaphoreGive(xSemaphore_temp);
+			xSemaphoreTake(xSemaphore_print,portMAX_DELAY);
+			printf("Temperature(type: %d, val: %d) sent!\n", temperature.type,temperature.value);
+			xSemaphoreGive(xSemaphore_print);
 			//vTaskDelay(1);
 		}
-		xMessageBufferSend(xMessageBuffer_temp
+		
+		xMessageBufferSend(xMessageBuffer
 		, &temperature 
-		, sizeof (int)
+		, sizeof (m_data)
 		, 0);
 		
-		printf("Temperature sent to the message buffer!\n");
+		m_print("Temperature sent to the message buffer!\n",xSemaphore_print);
 	}
 }

@@ -6,7 +6,7 @@
  */ 
 #include "../Headers/m_lora_includes.h"
 
-void print_co2_timer_callback(TimerHandle_t pxTimer)
+void print_measurements_timer_callback(TimerHandle_t pxTimer)
 {
-	xSemaphoreGive(xSemaphore_co2);
+	xSemaphoreGive(xSemaphore);
 }

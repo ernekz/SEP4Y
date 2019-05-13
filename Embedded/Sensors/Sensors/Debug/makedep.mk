@@ -6,31 +6,11 @@ Callbacks\measure_co2_callback.c
 
 Callbacks\measure_co2_timer_callback.c
 
-Callbacks\print_co2_timer_callback.c
-
-Callbacks\print_temp_timer_callback.c
+Callbacks\print_measurements_timer_callback.c
 
 Callbacks\measure_temp_timer_callback.c
 
-m_print.c
-
-Setup\create_all_tasks.c
-
-Setup\create_all_timers.c
-
-Setup\lora_setup.c
-
-Setup\driver_init.c
-
-Tasks\lora_handler_task.c
-
-Tasks\measure_co2_task.c
-
-Tasks\measure_temp_task.c
-
-Tasks\print_co2_task.c
-
-Tasks\print_temp_task.c
+Callbacks\send_data_timer_callback.c
 
 FreeRTOS\FreeRTOSTraceDriver\FreeRTOSTraceDriver.c
 
@@ -53,6 +33,24 @@ FreeRTOS\src\tasks.c
 FreeRTOS\src\timers.c
 
 FreeRTOS\src\variantHooks.c
+
+m_print.c
+
+Setup\create_all_tasks.c
+
+Setup\create_all_timers.c
+
+Setup\lora_setup.c
+
+Setup\global_init.c
+
+Tasks\lora_handler_task.c
+
+Tasks\measure_co2_task.c
+
+Tasks\measure_temp_task.c
+
+Tasks\print_measurements_task.c
 
 main.c
 

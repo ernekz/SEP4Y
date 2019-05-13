@@ -20,7 +20,6 @@
 #include <iled.h>
 #include <hih8120.h>
 #include <avr/io.h>
-#include <util/delay.h>
 #include <mh_z19.h>
 #include "semphr.h"
 #include <timers.h>
@@ -33,24 +32,23 @@
 #define LORA_HANDLER_TASK_PRIORITY (tskIDLE_PRIORITY + 1)
 
 
-void m_print(char message[], SemaphoreHandle_t xSemaphore);
+void m_print(char message[], SemaphoreHandle_t pxSemaphore);
 
-extern MessageBufferHandle_t xMessageBuffer_temp;
-extern MessageBufferHandle_t xMessageBuffer_co2;
+extern SemaphoreHandle_t xSemaphore;
+extern SemaphoreHandle_t xSemaphore_print;
 
-extern SemaphoreHandle_t xSemaphore_temp;
-extern SemaphoreHandle_t xSemaphore_co2;
+extern MessageBufferHandle_t xMessageBuffer;
+
 
 extern TimerHandle_t xTimer_measure_temp;
-extern TimerHandle_t xTimer_read_temp;
-extern TimerHandle_t xTimer_read_co2;
 extern TimerHandle_t xTimer_measure_co2;
+extern TimerHandle_t xTimer_read_measurements;
+extern TimerHandle_t xTimer_send_data;
 
-typedef struct  {
+typedef struct measurement{
 	int type;
 	uint16_t value;
 } m_data;
 
-extern m_data data;
 
 #endif /* M_INCLUDES_H_ */

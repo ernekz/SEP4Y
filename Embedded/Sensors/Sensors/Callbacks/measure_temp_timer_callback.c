@@ -8,7 +8,7 @@
 
 void measure_temp_timer_callback(TimerHandle_t pxTimer)
 {
-	xSemaphoreGive(xSemaphore_temp);
+	xSemaphoreGive(xSemaphore);
 }
 
 

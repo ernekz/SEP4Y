@@ -6,9 +6,9 @@
  */ 
 #include "Headers/m_lora_includes.h"
 
-void m_print(char message[], SemaphoreHandle_t xSemaphore)
+void m_print(char message[], SemaphoreHandle_t pxSemaphore)
 {
-	xSemaphoreTake(xSemaphore, portMAX_DELAY);
+	xSemaphoreTake(pxSemaphore, portMAX_DELAY);
 	printf("%s\n",message);
-	xSemaphoreGive(xSemaphore);
+	xSemaphoreGive(pxSemaphore);
 }

@@ -1,5 +1,6 @@
-Setup/lora_handler_create.d Setup/lora_handler_create.o: \
- ../Setup/lora_handler_create.c ../Setup/../Headers/m_lora_includes.h \
+Callbacks/send_data_timer_callback.d Callbacks/send_data_timer_callback.o: \
+ ../Callbacks/send_data_timer_callback.c \
+ ../Callbacks/../Headers/m_lora_includes.h \
  ../FreeRTOS/src/ATMEGA_FreeRTOS.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stddef.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stdint.h \
@@ -32,14 +33,12 @@ Setup/lora_handler_create.d Setup/lora_handler_create.o: \
  ../../../Iot\ driver\ Library/iled.h \
  ../../../Iot\ driver\ Library/ihal.h \
  ../../../Iot\ driver\ Library/hih8120.h \
- c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay.h \
- c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay_basic.h \
- c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\math.h \
  ../../../Iot\ driver\ Library/mh_z19.h ../FreeRTOS/src/semphr.h \
  ../FreeRTOS/src/queue.h ../FreeRTOS/src/timers.h \
- ../../../Iot\ driver\ Library/hcSr501.h
+ ../../../Iot\ driver\ Library/hcSr501.h ../FreeRTOS/src/message_buffer.h \
+ ../FreeRTOS/src/stream_buffer.h
 
-../Setup/../Headers/m_lora_includes.h:
+../Callbacks/../Headers/m_lora_includes.h:
 
 ../FreeRTOS/src/ATMEGA_FreeRTOS.h:
 
@@ -113,12 +112,6 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\
 
 ../../../Iot\ driver\ Library/hih8120.h:
 
-c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay.h:
-
-c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay_basic.h:
-
-c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\math.h:
-
 ../../../Iot\ driver\ Library/mh_z19.h:
 
 ../FreeRTOS/src/semphr.h:
@@ -128,3 +121,7 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\
 ../FreeRTOS/src/timers.h:
 
 ../../../Iot\ driver\ Library/hcSr501.h:
+
+../FreeRTOS/src/message_buffer.h:
+
+../FreeRTOS/src/stream_buffer.h:
