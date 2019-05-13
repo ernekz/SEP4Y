@@ -15,19 +15,19 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY
   5 .debug_aranges 00000910  00000000  00000000  00004bc4  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_info   0000bf7c  00000000  00000000  000054d4  2**0
+  6 .debug_info   0000bf7e  00000000  00000000  000054d4  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_abbrev 00002eef  00000000  00000000  00011450  2**0
+  7 .debug_abbrev 00002eef  00000000  00000000  00011452  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_line   00005911  00000000  00000000  0001433f  2**0
+  8 .debug_line   00005911  00000000  00000000  00014341  2**0
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_frame  00001e4c  00000000  00000000  00019c50  2**2
+  9 .debug_frame  00001e4c  00000000  00000000  00019c54  2**2
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_str    0000399c  00000000  00000000  0001ba9c  2**0
+ 10 .debug_str    0000399c  00000000  00000000  0001baa0  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_loc    0000aede  00000000  00000000  0001f438  2**0
+ 11 .debug_loc    0000aede  00000000  00000000  0001f43c  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_ranges 00000998  00000000  00000000  0002a316  2**0
+ 12 .debug_ranges 00000998  00000000  00000000  0002a31a  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -797,9 +797,9 @@ static void _lora_setup(void)
 
 	for(;;)
 	{
-		vTaskDelay(pdMS_TO_TICKS(30000UL));
-     5b6:	88 e1       	ldi	r24, 0x18	; 24
-     5b8:	90 e0       	ldi	r25, 0x00	; 0
+		vTaskDelay(10000/portTICK_PERIOD_MS);
+     5b6:	81 e7       	ldi	r24, 0x71	; 113
+     5b8:	92 e0       	ldi	r25, 0x02	; 2
      5ba:	0e 94 43 0d 	call	0x1a86	; 0x1a86 <vTaskDelay>
 		// Some dummy payload
 		uint16_t hum = 12345; // Dummy humidity

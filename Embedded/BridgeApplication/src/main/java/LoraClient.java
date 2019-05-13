@@ -2,22 +2,25 @@ import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.WebSocket;
 import java.nio.ByteBuffer;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.CompletionStage;
 
 public class LoraClient implements WebSocket.Listener {
-    static int temperature;
-    static int co2;
-    String jsonMessage;
-
-    MongoDB mongoDB= new MongoDB();
-
+    String hexTemperature, hexCo2, stringMessage;
+    public static final String keyword="data";
+    int decTemperature, decCo2;
+    MongoDB mongoDB;
 
     public LoraClient(){
         HttpClient client = HttpClient.newHttpClient();
-        temperature=0;
-        co2=0;
-        jsonMessage="";
+        stringMessage ="";
+        hexTemperature="";
+        decTemperature=0;
+        hexCo2="";
+        decCo2=0;
         CompletableFuture<WebSocket> webSocket = client.newWebSocketBuilder().buildAsync(URI.create("wss://iotnet.teracom.dk/app?token=vnoRoQAAABFpb3RuZXQudGVyYWNvbS5kazdq6klI6RmA9s7aH5ya0Eo="), this);
         System.out.println("LoraClient created.");
     }
@@ -49,21 +52,25 @@ public class LoraClient implements WebSocket.Listener {
         return new CompletableFuture().completedFuture("Pong completed.").thenAccept(System.out::println);
     }
     public CompletionStage<?> onText(WebSocket webSocket, CharSequence data, boolean least) {
-        jsonMessage=data.toString();
-        System.out.println(data);
-        getTemperature(jsonMessage);
-        getCo2(jsonMessage);
-        mongoDB.insertNewDocument("BridgeAppSampleData", temperature, co2);
+        if(data.toString().contains(keyword)&& stringMessage!=""){
+            mongoDB= new MongoDB();
+            List<String> message = new ArrayList<String>(Arrays.asList(data.toString().split(",")));
+            for(int i=0; i<message.size(); i++){
+                if(message.get(i).contains(keyword)){
+                    sendData(message, i);
+                }
+            }
+            stringMessage="";
+        }
         webSocket.request(1);
-
         return new CompletableFuture().completedFuture("onText() completed.").thenAccept(System.out::println);
     }
-
-    public void getTemperature(CharSequence jsonMessage){
-        temperature=Integer.parseInt(jsonMessage.toString().substring(116, 120));
+    public void sendData(List<String> message, int dataIndex){
+                System.out.println(message.get(dataIndex));
+                hexTemperature=message.get(dataIndex).substring(12, 16);
+                decTemperature = Integer.parseInt(hexTemperature, 16);
+                hexCo2=message.get(dataIndex).substring(16,20);
+                decCo2=Integer.parseInt(hexCo2, 16);
+                mongoDB.insertNewDocument("sep4collection", decCo2, decTemperature);
     }
-    public void getCo2(CharSequence jsonMessage){
-        co2=Integer.parseInt(jsonMessage.toString().substring(120, 124));
-    }
-
 }

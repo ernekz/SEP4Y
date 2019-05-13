@@ -30,13 +30,13 @@ public class MongoDB {
         mongoDatabase=mongoClient.getDatabase("sep4database");
     }
 
-    public void insertNewDocument(String collectionName, int temperature, int co2){
+    public void insertNewDocument(String collectionName, int co2, int temperature){
         Document document = new Document("date", currentDateAndTime)
                 .append("co2", co2)
                 .append("temperature", temperature)
-                .append("room_id", 5)
+                .append("room_id", 1)
                 .append("date_created", LocalDate.now().format(ISO_LOCAL_DATE))
-                .append("name", "example5");
+                .append("name", "example1");
                 mongoDatabase.getCollection(collectionName).insertOne(document);
     }
 }
