@@ -9,11 +9,11 @@
 
 void measure_co2_callback(uint16_t ppm);
 
-SemaphoreHandle_t xSemaphore_temp;
-SemaphoreHandle_t xSemaphore_co2;
-
 MessageBufferHandle_t xMessageBuffer_temp;
 MessageBufferHandle_t xMessageBuffer_co2;
+
+SemaphoreHandle_t xSemaphore_temp;
+SemaphoreHandle_t xSemaphore_co2;
 
 void driver_init()
 {
@@ -24,7 +24,7 @@ void driver_init()
 	xSemaphore_temp = xSemaphoreCreateMutex();
 	xSemaphore_co2 = xSemaphoreCreateMutex();
 	
-	xMessageBuffer_temp = xMessageBufferCreate( sizeof (int));
+	xMessageBuffer_temp = xMessageBufferCreate( sizeof (int) * 2);
 	xMessageBuffer_co2 = xMessageBufferCreate( sizeof (uint16_t));
 	
 	/*
@@ -32,9 +32,7 @@ void driver_init()
 	*/
 	if ( HIH8120_OK == hih8120Create() )
 	{
-		xSemaphoreTake(xSemaphore_temp, portMAX_DELAY);
-		printf("Temp/Humidity driver created.\n");
-		xSemaphoreGive(xSemaphore_temp);
+		m_print("Temp/Humidity driver created.\n",xSemaphore_temp);
 	}
 	
 	/*
@@ -50,9 +48,7 @@ void driver_init()
 	*/
 	
 	mh_z19_create(ser_USART3, measure_co2_callback);
-	xSemaphoreTake(xSemaphore_temp, portMAX_DELAY);
 	printf("Temp/Humidity driver created.\n");
-	xSemaphoreGive(xSemaphore_temp);
 }
 
 

@@ -6,18 +6,14 @@
  */ 
 #include "../Headers/m_lora_includes.h"
 
-SemaphoreHandle_t xSemaphore_co2;
 
 void measure_co2_task(void *pvParameters)
 {
 	while (1)
 	{
-		xSemaphoreTake(xSemaphore_co2, portMAX_DELAY);
-		
 		if (mh_z19_take_meassuring() != MHZ19_OK)
 		{
-			printf("Error measuring CO2 ppm!\n");
+			m_print("Error measuring CO2 value!\n",xSemaphore_co2);
 		}
 	}
-	vTaskDelete(NULL);
 }

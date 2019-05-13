@@ -7,14 +7,11 @@
 
 #include "../Headers/m_lora_includes.h"
 
-SemaphoreHandle_t xSemaphore_temp;
-MessageBufferHandle_t xMessageBuffer_temp;
-
 
 
 void print_temp_task(void *pvParameters)
 {
-	int data_to_receive[2];
+	int temperature; 
 	size_t xRecievedBytes;
 	
 	while (1)
@@ -22,15 +19,16 @@ void print_temp_task(void *pvParameters)
 		xSemaphoreTake(xSemaphore_temp, portMAX_DELAY);
 		
 		xRecievedBytes = xMessageBufferReceive( xMessageBuffer_temp
-							, (void *)data_to_receive
-							, sizeof (data_to_receive)
+							, &temperature
+							, sizeof (int)
 							,0 );
+		
 							
 		for (int i = 0; i < xRecievedBytes; i++)
 		{
-			//vTaskDelay(10/portTICK_PERIOD_MS);
+			vTaskDelay(100/portTICK_PERIOD_MS);
 			xSemaphoreTake(xSemaphore_temp,portMAX_DELAY);
-			printf("Received temperature: %d\n",data_to_receive[i]);
+			printf("\nReceived temperature: %d\n\n",temperature);
 			xSemaphoreGive(xSemaphore_temp);
 			vTaskDelay(1);	
 		}

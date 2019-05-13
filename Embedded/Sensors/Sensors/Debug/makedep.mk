@@ -12,6 +12,8 @@ Callbacks\print_temp_timer_callback.c
 
 Callbacks\measure_temp_timer_callback.c
 
+m_print.c
+
 Setup\create_all_tasks.c
 
 Setup\create_all_timers.c

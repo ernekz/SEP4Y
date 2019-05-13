@@ -33,4 +33,24 @@
 #define LORA_HANDLER_TASK_PRIORITY (tskIDLE_PRIORITY + 1)
 
 
+void m_print(char message[], SemaphoreHandle_t xSemaphore);
+
+extern MessageBufferHandle_t xMessageBuffer_temp;
+extern MessageBufferHandle_t xMessageBuffer_co2;
+
+extern SemaphoreHandle_t xSemaphore_temp;
+extern SemaphoreHandle_t xSemaphore_co2;
+
+extern TimerHandle_t xTimer_measure_temp;
+extern TimerHandle_t xTimer_read_temp;
+extern TimerHandle_t xTimer_read_co2;
+extern TimerHandle_t xTimer_measure_co2;
+
+typedef struct  {
+	int type;
+	uint16_t value;
+} m_data;
+
+extern m_data data;
+
 #endif /* M_INCLUDES_H_ */

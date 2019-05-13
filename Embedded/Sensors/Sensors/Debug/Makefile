@@ -50,6 +50,7 @@ C_SRCS +=  \
 ../Callbacks/print_co2_timer_callback.c \
 ../Callbacks/print_temp_timer_callback.c \
 ../Callbacks/measure_temp_timer_callback.c \
+../m_print.c \
 ../Setup/create_all_tasks.c \
 ../Setup/create_all_timers.c \
 ../Setup/lora_setup.c \
@@ -85,6 +86,7 @@ Callbacks/measure_co2_timer_callback.o \
 Callbacks/print_co2_timer_callback.o \
 Callbacks/print_temp_timer_callback.o \
 Callbacks/measure_temp_timer_callback.o \
+m_print.o \
 Setup/create_all_tasks.o \
 Setup/create_all_timers.o \
 Setup/lora_setup.o \
@@ -113,6 +115,7 @@ Callbacks/measure_co2_timer_callback.o \
 Callbacks/print_co2_timer_callback.o \
 Callbacks/print_temp_timer_callback.o \
 Callbacks/measure_temp_timer_callback.o \
+m_print.o \
 Setup/create_all_tasks.o \
 Setup/create_all_timers.o \
 Setup/lora_setup.o \
@@ -141,6 +144,7 @@ Callbacks/measure_co2_timer_callback.d \
 Callbacks/print_co2_timer_callback.d \
 Callbacks/print_temp_timer_callback.d \
 Callbacks/measure_temp_timer_callback.d \
+m_print.d \
 Setup/create_all_tasks.d \
 Setup/create_all_timers.d \
 Setup/lora_setup.d \
@@ -169,6 +173,7 @@ Callbacks/measure_co2_timer_callback.d \
 Callbacks/print_co2_timer_callback.d \
 Callbacks/print_temp_timer_callback.d \
 Callbacks/measure_temp_timer_callback.d \
+m_print.d \
 Setup/create_all_tasks.d \
 Setup/create_all_timers.d \
 Setup/lora_setup.d \
@@ -234,6 +239,13 @@ Callbacks/print_temp_timer_callback.o: ../Callbacks/print_temp_timer_callback.c
 	
 
 Callbacks/measure_temp_timer_callback.o: ../Callbacks/measure_temp_timer_callback.c
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU C Compiler : 5.4.0
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DF_CPU=16000000  -I"../../../stdio" -I"../FreeRTOS/src" -I"../../../Iot driver Library" -I"../Headers" -I"../Tasks" -I"../Setup"  -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g2 -Wall -mmcu=atmega2560 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\gcc\dev\atmega2560" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+./m_print.o: .././m_print.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
 	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DF_CPU=16000000  -I"../../../stdio" -I"../FreeRTOS/src" -I"../../../Iot driver Library" -I"../Headers" -I"../Tasks" -I"../Setup"  -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g2 -Wall -mmcu=atmega2560 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\gcc\dev\atmega2560" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 

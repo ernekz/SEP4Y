@@ -26,21 +26,21 @@ void create_all_tasks(UBaseType_t lora_handler_task_priority)
 	//,  lora_handler_task_priority  // Priority, with 3 (configMAX_PRIORITIES - 1) being the highest, and 0 being the lowest.
 	//,  NULL );
 	
-	//xTaskCreate(
-	//measure_temp_task
-	//, "Measure Temp Task"
-	//, configMINIMAL_STACK_SIZE
-	//, NULL
-	//, tskIDLE_PRIORITY 
-	//, NULL );
-	//
-	//xTaskCreate(
-	//print_temp_task
-	//, "Print Temp Task"
-	//, configMINIMAL_STACK_SIZE
-	//, NULL
-	//, tskIDLE_PRIORITY
-	//, NULL );
+	xTaskCreate(
+	measure_temp_task
+	, "Measure Temp Task"
+	, configMINIMAL_STACK_SIZE
+	, NULL
+	, tskIDLE_PRIORITY 
+	, NULL );
+	
+	xTaskCreate(
+	print_temp_task
+	, "Print Temp Task"
+	, configMINIMAL_STACK_SIZE
+	, NULL
+	, tskIDLE_PRIORITY
+	, NULL );
 	
 	xTaskCreate(
 	measure_co2_task

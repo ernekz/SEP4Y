@@ -6,12 +6,10 @@
  */ 
 #include "../Headers/m_lora_includes.h"
 
-MessageBufferHandle_t xMessageBuffer_co2;
-SemaphoreHandle_t xSemaphore_co2;
 
 void print_co2_task(void *pvParameters)
 {
-	uint16_t recieved_data;
+	uint16_t ppm;
 	size_t xRecievedBytes;
 	
 	while (1)
@@ -19,14 +17,19 @@ void print_co2_task(void *pvParameters)
 		xSemaphoreTake(xSemaphore_co2,portMAX_DELAY);
 		
 		xRecievedBytes = xMessageBufferReceive(xMessageBuffer_co2
-							,(void *) recieved_data
-							, xRecievedBytes
+							,&ppm
+							, sizeof(uint16_t)
 							,0 );
 		
-		xSemaphoreTake(xSemaphore_co2,portMAX_DELAY);
-		printf("Received CO2 level : %d ppm\n",recieved_data);
-		xSemaphoreGive(xSemaphore_co2);
-		vTaskDelay(10);
+		
+		for (int i = 0; i < xRecievedBytes; i++)
+		{
+			vTaskDelay(100/portTICK_PERIOD_MS);
+			xSemaphoreTake(xSemaphore_co2,portMAX_DELAY);
+			printf("Received CO2 level : %d ppm\n\n",ppm);
+			xSemaphoreGive(xSemaphore_co2);
+			vTaskDelay(1);
+		}
 	}
 	vTaskDelete(NULL);
 }

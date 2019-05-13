@@ -168,6 +168,9 @@
     <Compile Include="Headers\m_lora_includes.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="m_print.c">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="Setup\create_all_tasks.c">
       <SubType>compile</SubType>
     </Compile>
