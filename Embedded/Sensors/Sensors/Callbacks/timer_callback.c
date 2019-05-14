@@ -6,7 +6,7 @@
  */ 
 #include "../Headers/m_lora_includes.h"
 
-void timer_5_mins_callback(TimerHandle_t pxTimer)
+void timer_callback(TimerHandle_t pxTimer)
 {
 	xSemaphoreGive(xSemaphore_temperature);
 

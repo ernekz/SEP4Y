@@ -23,11 +23,11 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING
   9 .debug_frame  00002654  00000000  00000000  0001d554  2**2
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_str    00003f57  00000000  00000000  0001fba8  2**0
+ 10 .debug_str    00003f49  00000000  00000000  0001fba8  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_loc    000066ae  00000000  00000000  00023aff  2**0
+ 11 .debug_loc    000066ae  00000000  00000000  00023af1  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_ranges 000009d0  00000000  00000000  0002a1ad  2**0
+ 12 .debug_ranges 000009d0  00000000  00000000  0002a19f  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -9754,7 +9754,7 @@ void create_all_tasks(UBaseType_t lora_reset_task_priority)
 0000457a <create_all_timers>:
 void timer_5_mins_callback(TimerHandle_t pxTimer);
 
-TimerHandle_t xTimer_5_mins;
+TimerHandle_t xTimer;
 
 void create_all_timers()
 {
@@ -9764,7 +9764,7 @@ void create_all_timers()
     4580:	df 93       	push	r29
     4582:	cd b7       	in	r28, 0x3d	; 61
     4584:	de b7       	in	r29, 0x3e	; 62
-	xTimer_5_mins = xTimerCreate("5 minutes timer",
+	xTimer = xTimerCreate("5 minutes timer",
     4586:	0d e2       	ldi	r16, 0x2D	; 45
     4588:	11 e0       	ldi	r17, 0x01	; 1
     458a:	20 e0       	ldi	r18, 0x00	; 0
@@ -9775,8 +9775,8 @@ void create_all_timers()
     4594:	88 e5       	ldi	r24, 0x58	; 88
     4596:	92 e0       	ldi	r25, 0x02	; 2
     4598:	07 da       	rcall	.-3058   	; 0x39a8 <xTimerCreate>
-    459a:	90 93 09 0b 	sts	0x0B09, r25	; 0x800b09 <xTimer_5_mins+0x1>
-    459e:	80 93 08 0b 	sts	0x0B08, r24	; 0x800b08 <xTimer_5_mins>
+    459a:	90 93 09 0b 	sts	0x0B09, r25	; 0x800b09 <xTimer+0x1>
+    459e:	80 93 08 0b 	sts	0x0B08, r24	; 0x800b08 <xTimer>
 			(20000/portTICK_PERIOD_MS),
 			pdTRUE,
 			(void *)0,
@@ -10873,10 +10873,10 @@ int main(void)
     4d2c:	ee db       	rcall	.-2084   	; 0x450a <create_all_tasks>
     4d2e:	0e 94 b5 13 	call	0x276a	; 0x276a <xTaskGetTickCount>
 	
-	xTimerStart(xTimer_5_mins,0);
+	xTimerStart(xTimer,0);
     4d32:	ac 01       	movw	r20, r24
-    4d34:	80 91 08 0b 	lds	r24, 0x0B08	; 0x800b08 <xTimer_5_mins>
-    4d38:	90 91 09 0b 	lds	r25, 0x0B09	; 0x800b09 <xTimer_5_mins+0x1>
+    4d34:	80 91 08 0b 	lds	r24, 0x0B08	; 0x800b08 <xTimer>
+    4d38:	90 91 09 0b 	lds	r25, 0x0B09	; 0x800b09 <xTimer+0x1>
     4d3c:	00 e0       	ldi	r16, 0x00	; 0
     4d3e:	10 e0       	ldi	r17, 0x00	; 0
     4d40:	20 e0       	ldi	r18, 0x00	; 0

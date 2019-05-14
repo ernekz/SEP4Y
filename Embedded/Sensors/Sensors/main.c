@@ -29,7 +29,7 @@ int main(void)
 	
 	create_all_tasks(LORA_RESET_TASK_PRIORITY);
 	
-	xTimerStart(xTimer_5_mins,0);
+	xTimerStart(xTimer,0);
 					
 	vTaskStartScheduler();
 	

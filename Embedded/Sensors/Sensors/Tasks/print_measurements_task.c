@@ -10,7 +10,6 @@
 void print_measuremenets_task(void *pvParameters)
 {
 	m_data data;
-	size_t xRecievedBytes;
 	
 	while (1)
 	{

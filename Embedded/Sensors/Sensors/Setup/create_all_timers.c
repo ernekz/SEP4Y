@@ -10,11 +10,11 @@
 
 void timer_5_mins_callback(TimerHandle_t pxTimer);
 
-TimerHandle_t xTimer_5_mins;
+TimerHandle_t xTimer;
 
 void create_all_timers()
 {
-	xTimer_5_mins = xTimerCreate("5 minutes timer",
+	xTimer = xTimerCreate("5 minutes timer",
 			(20000/portTICK_PERIOD_MS),
 			pdTRUE,
 			(void *)0,

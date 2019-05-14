@@ -28,9 +28,7 @@ void lora_send_data_task(void *pvParameters)
 	{
 		vTaskDelay(1000/portTICK_PERIOD_MS);
 		xSemaphoreTake(xSemaphore_view_data, portMAX_DELAY);
-		
-		m_print("\nData Sending Task running!\n",xSemaphore_print);
-		
+
 		vTaskDelay(1000/portTICK_PERIOD_MS);
 
 		if (xQueueReceive(xQueue, &(data), 0) != pdTRUE)
@@ -48,7 +46,7 @@ void lora_send_data_task(void *pvParameters)
 			_uplink_payload.bytes[2] = data.value >> 8;
 			_uplink_payload.bytes[3] = data.value & 0xFF;
 
-			led_short_puls(led_ST4);  // OPTIONAL
+			led_short_puls(led_ST4);  
 			printf("Upload Message >%s<\n", lora_driver_map_return_code_to_text(lora_driver_sent_upload_message(true, &_uplink_payload)));
 		}
 	}

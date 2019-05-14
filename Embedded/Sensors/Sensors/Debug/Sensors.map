@@ -112,7 +112,6 @@ c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/..
 Allocating common symbols
 Common symbol       size              file
 
-xTimer_5_mins       0x2               Setup/create_all_timers.o
 xSemaphore_view_data
                     0x2               Setup/global_init.o
 xSemaphore_print    0x2               Setup/global_init.o
@@ -124,6 +123,7 @@ register_access     0x16              ../../../Iot driver Library\libIotLibrary.
 __brkval            0x2               c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libc.a(malloc.o)
 xQueue              0x2               Setup/global_init.o
 co2_value           0x2               Callbacks/measure_co2_callback.o
+xTimer              0x2               Setup/create_all_timers.o
 __flp               0x2               c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libc.a(malloc.o)
 __iob               0x6               c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libc.a(iob.o)
 
@@ -388,14 +388,14 @@ Discarded input sections
  .rodata        0x00000000       0x74 Tasks/print_measurements_task.o
  .text.print_measuremenets_task
                 0x00000000       0xc4 Tasks/print_measurements_task.o
- .debug_info    0x00000000      0x150 Tasks/print_measurements_task.o
- .debug_abbrev  0x00000000       0xc6 Tasks/print_measurements_task.o
+ .debug_info    0x00000000      0x13a Tasks/print_measurements_task.o
+ .debug_abbrev  0x00000000       0xb9 Tasks/print_measurements_task.o
  .debug_loc     0x00000000       0x48 Tasks/print_measurements_task.o
  .debug_aranges
                 0x00000000       0x20 Tasks/print_measurements_task.o
  .debug_ranges  0x00000000       0x10 Tasks/print_measurements_task.o
- .debug_line    0x00000000      0x1b7 Tasks/print_measurements_task.o
- .debug_str     0x00000000      0x237 Tasks/print_measurements_task.o
+ .debug_line    0x00000000      0x147 Tasks/print_measurements_task.o
+ .debug_str     0x00000000      0x221 Tasks/print_measurements_task.o
  .comment       0x00000000       0x31 Tasks/print_measurements_task.o
  .debug_frame   0x00000000       0x34 Tasks/print_measurements_task.o
  .text          0x00000000        0x0 main.o
@@ -1738,7 +1738,7 @@ END GROUP
  COMMON         0x00800b06        0x2 Callbacks/measure_co2_callback.o
                 0x00800b06                co2_value
  COMMON         0x00800b08        0x2 Setup/create_all_timers.o
-                0x00800b08                xTimer_5_mins
+                0x00800b08                xTimer
  COMMON         0x00800b0a        0xc Setup/global_init.o
                 0x00800b0a                xSemaphore_view_data
                 0x00800b0c                xSemaphore_print
@@ -2079,7 +2079,7 @@ END GROUP
  .debug_frame   0x00002430       0xf8 ../../../Iot driver Library\libIotLibrary.a(mh_z19.o)
  .debug_frame   0x00002528      0x12c ../../../Iot driver Library\libIotLibrary.a(twi.o)
 
-.debug_str      0x00000000     0x3f57
+.debug_str      0x00000000     0x3f49
  *(.debug_str)
  .debug_str     0x00000000      0x3e6 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega2560/avr6/crtatmega2560.o
  .debug_str     0x000003e6      0x166 Callbacks/measure_co2_callback.o
@@ -2108,43 +2108,43 @@ END GROUP
                                 0x1c8 (size before relaxing)
  .debug_str     0x0000252d       0x46 Setup/create_all_tasks.o
                                 0x1a5 (size before relaxing)
- .debug_str     0x00002573       0x3d Setup/create_all_timers.o
-                                0x1c8 (size before relaxing)
- .debug_str     0x000025b0       0x21 Setup/lora_reset.o
+ .debug_str     0x00002573       0x2f Setup/create_all_timers.o
+                                0x1c1 (size before relaxing)
+ .debug_str     0x000025a2       0x21 Setup/lora_reset.o
                                 0x174 (size before relaxing)
- .debug_str     0x000025d1      0x1fa Setup/lora_setup.o
+ .debug_str     0x000025c3      0x1fa Setup/lora_setup.o
                                 0x39f (size before relaxing)
- .debug_str     0x000027cb       0xc5 Setup/global_init.o
+ .debug_str     0x000027bd       0xc5 Setup/global_init.o
                                 0x2c9 (size before relaxing)
- .debug_str     0x00002890       0x72 Tasks/lora_send_data_task.o
+ .debug_str     0x00002882       0x72 Tasks/lora_send_data_task.o
                                 0x28f (size before relaxing)
- .debug_str     0x00002902       0x7d Tasks/measure_co2_task.o
+ .debug_str     0x000028f4       0x7d Tasks/measure_co2_task.o
                                 0x276 (size before relaxing)
- .debug_str     0x0000297f       0x2f Tasks/measure_temp_task.o
+ .debug_str     0x00002971       0x2f Tasks/measure_temp_task.o
                                 0x296 (size before relaxing)
- .debug_str     0x000029ae       0x11 main.o
-                                0x1a2 (size before relaxing)
- .debug_str     0x000029bf      0x2fd ../../../stdio\libserialLib.a(stdio_driver.o)
+ .debug_str     0x000029a0       0x11 main.o
+                                0x19b (size before relaxing)
+ .debug_str     0x000029b1      0x2fd ../../../stdio\libserialLib.a(stdio_driver.o)
                                 0x37b (size before relaxing)
- .debug_str     0x00002cbc      0x2ef ../../../stdio\libserialLib.a(serial.o)
+ .debug_str     0x00002cae      0x2ef ../../../stdio\libserialLib.a(serial.o)
                                 0x63c (size before relaxing)
- .debug_str     0x00002fab       0x15 ../../../stdio\libserialLib.a(fifo.o)
+ .debug_str     0x00002f9d       0x15 ../../../stdio\libserialLib.a(fifo.o)
                                 0x23a (size before relaxing)
- .debug_str     0x00002fc0       0xce ../../../Iot driver Library\libIotLibrary.a(hal.o)
+ .debug_str     0x00002fb2       0xce ../../../Iot driver Library\libIotLibrary.a(hal.o)
                                 0x278 (size before relaxing)
- .debug_str     0x0000308e      0x24f ../../../Iot driver Library\libIotLibrary.a(hih8120.o)
+ .debug_str     0x00003080      0x24f ../../../Iot driver Library\libIotLibrary.a(hih8120.o)
                                 0x44a (size before relaxing)
- .debug_str     0x000032dd      0x122 ../../../Iot driver Library\libIotLibrary.a(led.o)
+ .debug_str     0x000032cf      0x122 ../../../Iot driver Library\libIotLibrary.a(led.o)
                                 0x3d2 (size before relaxing)
- .debug_str     0x000033ff      0x60e ../../../Iot driver Library\libIotLibrary.a(lora_driver.o)
+ .debug_str     0x000033f1      0x60e ../../../Iot driver Library\libIotLibrary.a(lora_driver.o)
                                 0xc93 (size before relaxing)
- .debug_str     0x00003a0d       0x46 ../../../Iot driver Library\libIotLibrary.a(lora_driver_utils.o)
+ .debug_str     0x000039ff       0x46 ../../../Iot driver Library\libIotLibrary.a(lora_driver_utils.o)
                                 0x205 (size before relaxing)
- .debug_str     0x00003a53       0xda ../../../Iot driver Library\libIotLibrary.a(mega_register_access.o)
+ .debug_str     0x00003a45       0xda ../../../Iot driver Library\libIotLibrary.a(mega_register_access.o)
                                 0x252 (size before relaxing)
- .debug_str     0x00003b2d      0x147 ../../../Iot driver Library\libIotLibrary.a(mh_z19.o)
+ .debug_str     0x00003b1f      0x147 ../../../Iot driver Library\libIotLibrary.a(mh_z19.o)
                                 0x47a (size before relaxing)
- .debug_str     0x00003c74      0x2e3 ../../../Iot driver Library\libIotLibrary.a(twi.o)
+ .debug_str     0x00003c66      0x2e3 ../../../Iot driver Library\libIotLibrary.a(twi.o)
                                 0x5a8 (size before relaxing)
 
 .debug_loc      0x00000000     0x66ae

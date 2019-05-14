@@ -38,7 +38,7 @@ extern SemaphoreHandle_t xSemaphore_temperature;
 extern SemaphoreHandle_t xSemaphore_view_data;
 extern SemaphoreHandle_t xSemaphore_buffer;
 
-extern TimerHandle_t xTimer_5_mins;
+extern TimerHandle_t xTimer;
 extern QueueHandle_t xQueue;
 
 

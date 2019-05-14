@@ -16,9 +16,6 @@ void measure_temp_task(void *pvParameters)
 	while (1)
 	{
 		xSemaphoreTake(xSemaphore_temperature, portMAX_DELAY);
-		
-		m_print("\nMeasuring Temperature Task running!\n",xSemaphore_print);
-		
 
 		if ( HIH8120_OK != hih8120Wakeup() )
 		{
@@ -41,12 +38,6 @@ void measure_temp_task(void *pvParameters)
 			if (xQueueSend(xQueue, (void *) &temperature, portMAX_DELAY) != pdPASS)
 			{
 				m_print("Queue is full! Failed to send temperature!\n",xSemaphore_print);
-			}
-			else
-			{
-				xSemaphoreTake(xSemaphore_print,portMAX_DELAY);
-				printf("Temperature(type: %d, val: %d) sent!\n", temperature.type,temperature.value);
-				xSemaphoreGive(xSemaphore_print);
 			}
 		}
 		vTaskDelay(10000/portTICK_PERIOD_MS);
