@@ -46,7 +46,6 @@ SUBDIRS :=  \
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS +=  \
 ../Callbacks/measure_co2_callback.c \
-../write_to_buffer.c \
 ../Callbacks/timer_5_mins_callback.c \
 ../FreeRTOS/FreeRTOSTraceDriver/FreeRTOSTraceDriver.c \
 ../FreeRTOS/src/croutine.c \
@@ -80,7 +79,6 @@ ASM_SRCS +=
 
 OBJS +=  \
 Callbacks/measure_co2_callback.o \
-write_to_buffer.o \
 Callbacks/timer_5_mins_callback.o \
 FreeRTOS/FreeRTOSTraceDriver/FreeRTOSTraceDriver.o \
 FreeRTOS/src/croutine.o \
@@ -107,7 +105,6 @@ main.o
 
 OBJS_AS_ARGS +=  \
 Callbacks/measure_co2_callback.o \
-write_to_buffer.o \
 Callbacks/timer_5_mins_callback.o \
 FreeRTOS/FreeRTOSTraceDriver/FreeRTOSTraceDriver.o \
 FreeRTOS/src/croutine.o \
@@ -134,7 +131,6 @@ main.o
 
 C_DEPS +=  \
 Callbacks/measure_co2_callback.d \
-write_to_buffer.d \
 Callbacks/timer_5_mins_callback.d \
 FreeRTOS/FreeRTOSTraceDriver/FreeRTOSTraceDriver.d \
 FreeRTOS/src/croutine.d \
@@ -161,7 +157,6 @@ main.d
 
 C_DEPS_AS_ARGS +=  \
 Callbacks/measure_co2_callback.d \
-write_to_buffer.d \
 Callbacks/timer_5_mins_callback.d \
 FreeRTOS/FreeRTOSTraceDriver/FreeRTOSTraceDriver.d \
 FreeRTOS/src/croutine.d \
@@ -201,13 +196,6 @@ LINKER_SCRIPT_DEP+=
 
 # AVR32/GNU C Compiler
 Callbacks/measure_co2_callback.o: ../Callbacks/measure_co2_callback.c
-	@echo Building file: $<
-	@echo Invoking: AVR/GNU C Compiler : 5.4.0
-	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DF_CPU=16000000  -I"../../../stdio" -I"../FreeRTOS/src" -I"../../../Iot driver Library" -I"../Headers" -I"../Tasks" -I"../Setup"  -O0 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g2 -Wall -mmcu=atmega2560 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\gcc\dev\atmega2560" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
-	@echo Finished building: $<
-	
-
-./write_to_buffer.o: .././write_to_buffer.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
 	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DF_CPU=16000000  -I"../../../stdio" -I"../FreeRTOS/src" -I"../../../Iot driver Library" -I"../Headers" -I"../Tasks" -I"../Setup"  -O0 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g2 -Wall -mmcu=atmega2560 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\gcc\dev\atmega2560" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 

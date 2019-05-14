@@ -11,9 +11,7 @@ void lora_reset();
 
 void measure_temp_task(void *pvParameters)
 {
-	m_data temperature; //= {2, 5};
-	
-	//lora_reset();
+	m_data temperature; 
 	
 	while (1)
 	{
@@ -40,7 +38,6 @@ void measure_temp_task(void *pvParameters)
 			temperature.type = 2;
 			temperature.value = hih8120GetTemperature_x10();
 				
-			//write_to_buffer(xMessageBuffer,temperature);
 			if (xQueueSend(xQueue, (void *) &temperature, portMAX_DELAY) != pdPASS)
 			{
 				m_print("Queue is full! Failed to send temperature!\n",xSemaphore_print);
@@ -52,9 +49,7 @@ void measure_temp_task(void *pvParameters)
 				xSemaphoreGive(xSemaphore_print);
 			}
 		}
-		
-		//m_print("Temperature sent to the message buffer!\n",xSemaphore_print);
-		vTaskDelay(1000/portTICK_PERIOD_MS);
+		vTaskDelay(10000/portTICK_PERIOD_MS);
 	}
 	vTaskDelete(NULL);
 }

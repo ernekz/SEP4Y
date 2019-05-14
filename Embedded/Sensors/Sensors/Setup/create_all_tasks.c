@@ -40,7 +40,7 @@ void create_all_tasks(UBaseType_t lora_reset_task_priority)
 	, "Measure CO2 Task"
 	, configMINIMAL_STACK_SIZE
 	, NULL
-	, ( tskIDLE_PRIORITY  )
+	, ( tskIDLE_PRIORITY )
 	, NULL );
 	
 	//xTaskCreate(

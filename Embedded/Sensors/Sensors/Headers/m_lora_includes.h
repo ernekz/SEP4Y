@@ -38,7 +38,6 @@ extern SemaphoreHandle_t xSemaphore_temperature;
 extern SemaphoreHandle_t xSemaphore_view_data;
 extern SemaphoreHandle_t xSemaphore_buffer;
 
-//extern MessageBufferHandle_t xMessageBuffer;
 extern TimerHandle_t xTimer_5_mins;
 extern QueueHandle_t xQueue;
 
@@ -52,6 +51,6 @@ typedef struct measurement{
 
 
 void m_print(char message[], SemaphoreHandle_t pxSemaphore);
-void write_to_buffer(MessageBufferHandle_t xMessageBuffer, m_data data);
+
 
 #endif /* M_INCLUDES_H_ */

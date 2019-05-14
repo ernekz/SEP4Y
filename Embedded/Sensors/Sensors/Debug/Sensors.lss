@@ -9764,7 +9764,6 @@ void create_all_timers()
     4580:	df 93       	push	r29
     4582:	cd b7       	in	r28, 0x3d	; 61
     4584:	de b7       	in	r29, 0x3e	; 62
-
 	xTimer_5_mins = xTimerCreate("5 minutes timer",
     4586:	0d e2       	ldi	r16, 0x2D	; 45
     4588:	11 e0       	ldi	r17, 0x01	; 1
@@ -9778,11 +9777,10 @@ void create_all_timers()
     4598:	07 da       	rcall	.-3058   	; 0x39a8 <xTimerCreate>
     459a:	90 93 09 0b 	sts	0x0B09, r25	; 0x800b09 <xTimer_5_mins+0x1>
     459e:	80 93 08 0b 	sts	0x0B08, r24	; 0x800b08 <xTimer_5_mins>
-	//xTimer_send_data = xTimerCreate("Data Sending Timer",
-			//(1000/portTICK_PERIOD_MS),
-			//pdTRUE,
-			//(void *)3,
-			//send_data_timer_callback);		
+			(20000/portTICK_PERIOD_MS),
+			pdTRUE,
+			(void *)0,
+			timer_5_mins_callback);
     45a2:	00 00       	nop
     45a4:	df 91       	pop	r29
     45a6:	cf 91       	pop	r28
@@ -10325,10 +10323,9 @@ void global_init()
     4982:	70 e0       	ldi	r23, 0x00	; 0
     4984:	0e 94 81 07 	call	0xf02	; 0xf02 <xQueueGenericSend>
 	
-	//xMessageBuffer = xMessageBufferCreate( sizeof (m_data) * 3);
-	xQueue = xQueueCreate(2,sizeof (m_data *));
+	xQueue = xQueueCreate(2,sizeof (m_data));
     4988:	40 e0       	ldi	r20, 0x00	; 0
-    498a:	62 e0       	ldi	r22, 0x02	; 2
+    498a:	64 e0       	ldi	r22, 0x04	; 4
     498c:	82 e0       	ldi	r24, 0x02	; 2
     498e:	0e 94 a9 06 	call	0xd52	; 0xd52 <xQueueGenericCreate>
     4992:	90 93 15 0b 	sts	0x0B15, r25	; 0x800b15 <xQueue+0x1>
@@ -10407,8 +10404,6 @@ void lora_send_data_task(void *pvParameters)
     49f8:	9e 83       	std	Y+6, r25	; 0x06
     49fa:	8d 83       	std	Y+5, r24	; 0x05
 	m_data data;
-	//int xRecievedBytes;
-	
 
 	lora_reset();
     49fc:	d8 dd       	rcall	.-1104   	; 0x45ae <lora_reset>
@@ -10423,122 +10418,117 @@ void lora_send_data_task(void *pvParameters)
 
 	while (1)
 	{
+		vTaskDelay(1000/portTICK_PERIOD_MS);
+    4a0a:	8e e3       	ldi	r24, 0x3E	; 62
+    4a0c:	90 e0       	ldi	r25, 0x00	; 0
+    4a0e:	0e 94 b0 12 	call	0x2560	; 0x2560 <vTaskDelay>
 		xSemaphoreTake(xSemaphore_view_data, portMAX_DELAY);
-    4a0a:	80 91 0a 0b 	lds	r24, 0x0B0A	; 0x800b0a <xSemaphore_view_data>
-    4a0e:	90 91 0b 0b 	lds	r25, 0x0B0B	; 0x800b0b <xSemaphore_view_data+0x1>
-    4a12:	6f ef       	ldi	r22, 0xFF	; 255
-    4a14:	7f ef       	ldi	r23, 0xFF	; 255
-    4a16:	0e 94 31 09 	call	0x1262	; 0x1262 <xQueueSemaphoreTake>
+    4a12:	80 91 0a 0b 	lds	r24, 0x0B0A	; 0x800b0a <xSemaphore_view_data>
+    4a16:	90 91 0b 0b 	lds	r25, 0x0B0B	; 0x800b0b <xSemaphore_view_data+0x1>
+    4a1a:	6f ef       	ldi	r22, 0xFF	; 255
+    4a1c:	7f ef       	ldi	r23, 0xFF	; 255
+    4a1e:	0e 94 31 09 	call	0x1262	; 0x1262 <xQueueSemaphoreTake>
 		
 		m_print("\nData Sending Task running!\n",xSemaphore_print);
-    4a1a:	80 91 0c 0b 	lds	r24, 0x0B0C	; 0x800b0c <xSemaphore_print>
-    4a1e:	90 91 0d 0b 	lds	r25, 0x0B0D	; 0x800b0d <xSemaphore_print+0x1>
-    4a22:	bc 01       	movw	r22, r24
-    4a24:	80 ec       	ldi	r24, 0xC0	; 192
-    4a26:	93 e0       	ldi	r25, 0x03	; 3
-    4a28:	4b dd       	rcall	.-1386   	; 0x44c0 <m_print>
-		
+    4a22:	80 91 0c 0b 	lds	r24, 0x0B0C	; 0x800b0c <xSemaphore_print>
+    4a26:	90 91 0d 0b 	lds	r25, 0x0B0D	; 0x800b0d <xSemaphore_print+0x1>
+    4a2a:	bc 01       	movw	r22, r24
+    4a2c:	80 ec       	ldi	r24, 0xC0	; 192
+    4a2e:	93 e0       	ldi	r25, 0x03	; 3
+    4a30:	47 dd       	rcall	.-1394   	; 0x44c0 <m_print>
 		
 		vTaskDelay(1000/portTICK_PERIOD_MS);
-    4a2a:	8e e3       	ldi	r24, 0x3E	; 62
-    4a2c:	90 e0       	ldi	r25, 0x00	; 0
-    4a2e:	0e 94 b0 12 	call	0x2560	; 0x2560 <vTaskDelay>
-		//,0 );
-		//
-		//for (int i = 0; i < xRecievedBytes; i++)
-		//{
-			
-		if (xQueueReceive(xQueue, & ( data ), 0) != pdTRUE)
-    4a32:	80 91 14 0b 	lds	r24, 0x0B14	; 0x800b14 <xQueue>
-    4a36:	90 91 15 0b 	lds	r25, 0x0B15	; 0x800b15 <xQueue+0x1>
-    4a3a:	40 e0       	ldi	r20, 0x00	; 0
-    4a3c:	50 e0       	ldi	r21, 0x00	; 0
-    4a3e:	9e 01       	movw	r18, r28
-    4a40:	2f 5f       	subi	r18, 0xFF	; 255
-    4a42:	3f 4f       	sbci	r19, 0xFF	; 255
-    4a44:	b9 01       	movw	r22, r18
-    4a46:	0e 94 88 08 	call	0x1110	; 0x1110 <xQueueReceive>
-    4a4a:	81 30       	cpi	r24, 0x01	; 1
-    4a4c:	49 f0       	breq	.+18     	; 0x4a60 <lora_send_data_task+0x74>
+    4a32:	8e e3       	ldi	r24, 0x3E	; 62
+    4a34:	90 e0       	ldi	r25, 0x00	; 0
+    4a36:	0e 94 b0 12 	call	0x2560	; 0x2560 <vTaskDelay>
+
+		if (xQueueReceive(xQueue, &(data), 0) != pdTRUE)
+    4a3a:	80 91 14 0b 	lds	r24, 0x0B14	; 0x800b14 <xQueue>
+    4a3e:	90 91 15 0b 	lds	r25, 0x0B15	; 0x800b15 <xQueue+0x1>
+    4a42:	40 e0       	ldi	r20, 0x00	; 0
+    4a44:	50 e0       	ldi	r21, 0x00	; 0
+    4a46:	9e 01       	movw	r18, r28
+    4a48:	2f 5f       	subi	r18, 0xFF	; 255
+    4a4a:	3f 4f       	sbci	r19, 0xFF	; 255
+    4a4c:	b9 01       	movw	r22, r18
+    4a4e:	0e 94 88 08 	call	0x1110	; 0x1110 <xQueueReceive>
+    4a52:	81 30       	cpi	r24, 0x01	; 1
+    4a54:	49 f0       	breq	.+18     	; 0x4a68 <lora_send_data_task+0x7c>
 		{
 			m_print("Unable to receive data from queue!\n",xSemaphore_print);
-    4a4e:	80 91 0c 0b 	lds	r24, 0x0B0C	; 0x800b0c <xSemaphore_print>
-    4a52:	90 91 0d 0b 	lds	r25, 0x0B0D	; 0x800b0d <xSemaphore_print+0x1>
-    4a56:	bc 01       	movw	r22, r24
-    4a58:	8d ed       	ldi	r24, 0xDD	; 221
-    4a5a:	93 e0       	ldi	r25, 0x03	; 3
-    4a5c:	31 dd       	rcall	.-1438   	; 0x44c0 <m_print>
-    4a5e:	d5 cf       	rjmp	.-86     	; 0x4a0a <lora_send_data_task+0x1e>
+    4a56:	80 91 0c 0b 	lds	r24, 0x0B0C	; 0x800b0c <xSemaphore_print>
+    4a5a:	90 91 0d 0b 	lds	r25, 0x0B0D	; 0x800b0d <xSemaphore_print+0x1>
+    4a5e:	bc 01       	movw	r22, r24
+    4a60:	8d ed       	ldi	r24, 0xDD	; 221
+    4a62:	93 e0       	ldi	r25, 0x03	; 3
+    4a64:	2d dd       	rcall	.-1446   	; 0x44c0 <m_print>
+    4a66:	d1 cf       	rjmp	.-94     	; 0x4a0a <lora_send_data_task+0x1e>
 		}
 		else 
 		{	
-			_uplink_payload.bytes[0] = data.type >> 8;
-    4a60:	89 81       	ldd	r24, Y+1	; 0x01
-    4a62:	9a 81       	ldd	r25, Y+2	; 0x02
-    4a64:	89 2f       	mov	r24, r25
-    4a66:	99 0f       	add	r25, r25
-    4a68:	99 0b       	sbc	r25, r25
-    4a6a:	80 93 98 09 	sts	0x0998, r24	; 0x800998 <_uplink_payload+0x2>
-			_uplink_payload.bytes[1] = data.type & 0xFF;
-    4a6e:	89 81       	ldd	r24, Y+1	; 0x01
-    4a70:	9a 81       	ldd	r25, Y+2	; 0x02
-    4a72:	80 93 99 09 	sts	0x0999, r24	; 0x800999 <_uplink_payload+0x3>
-			_uplink_payload.bytes[2] = data.value >> 8;
-    4a76:	8b 81       	ldd	r24, Y+3	; 0x03
-    4a78:	9c 81       	ldd	r25, Y+4	; 0x04
-    4a7a:	89 2f       	mov	r24, r25
-    4a7c:	99 0f       	add	r25, r25
-    4a7e:	99 0b       	sbc	r25, r25
-    4a80:	80 93 9a 09 	sts	0x099A, r24	; 0x80099a <_uplink_payload+0x4>
-			_uplink_payload.bytes[3] = data.value & 0xFF;	
-    4a84:	8b 81       	ldd	r24, Y+3	; 0x03
-    4a86:	9c 81       	ldd	r25, Y+4	; 0x04
-    4a88:	80 93 9b 09 	sts	0x099B, r24	; 0x80099b <_uplink_payload+0x5>
-			
 			xSemaphoreTake(xSemaphore_print,portMAX_DELAY);
-    4a8c:	80 91 0c 0b 	lds	r24, 0x0B0C	; 0x800b0c <xSemaphore_print>
-    4a90:	90 91 0d 0b 	lds	r25, 0x0B0D	; 0x800b0d <xSemaphore_print+0x1>
-    4a94:	6f ef       	ldi	r22, 0xFF	; 255
-    4a96:	7f ef       	ldi	r23, 0xFF	; 255
-    4a98:	0e 94 31 09 	call	0x1262	; 0x1262 <xQueueSemaphoreTake>
+    4a68:	80 91 0c 0b 	lds	r24, 0x0B0C	; 0x800b0c <xSemaphore_print>
+    4a6c:	90 91 0d 0b 	lds	r25, 0x0B0D	; 0x800b0d <xSemaphore_print+0x1>
+    4a70:	6f ef       	ldi	r22, 0xFF	; 255
+    4a72:	7f ef       	ldi	r23, 0xFF	; 255
+    4a74:	0e 94 31 09 	call	0x1262	; 0x1262 <xQueueSemaphoreTake>
 			printf("Received measurement for sending: type: %d, val: %d\n\n",data.type, data.value);
-    4a9c:	2b 81       	ldd	r18, Y+3	; 0x03
-    4a9e:	3c 81       	ldd	r19, Y+4	; 0x04
-    4aa0:	89 81       	ldd	r24, Y+1	; 0x01
-    4aa2:	9a 81       	ldd	r25, Y+2	; 0x02
-    4aa4:	43 2f       	mov	r20, r19
-    4aa6:	4f 93       	push	r20
-    4aa8:	2f 93       	push	r18
-    4aaa:	29 2f       	mov	r18, r25
-    4aac:	2f 93       	push	r18
-    4aae:	8f 93       	push	r24
-    4ab0:	81 e0       	ldi	r24, 0x01	; 1
-    4ab2:	94 e0       	ldi	r25, 0x04	; 4
-    4ab4:	89 2f       	mov	r24, r25
-    4ab6:	8f 93       	push	r24
-    4ab8:	81 e0       	ldi	r24, 0x01	; 1
-    4aba:	94 e0       	ldi	r25, 0x04	; 4
-    4abc:	8f 93       	push	r24
-    4abe:	0e 94 4b 37 	call	0x6e96	; 0x6e96 <printf>
-    4ac2:	0f 90       	pop	r0
-    4ac4:	0f 90       	pop	r0
-    4ac6:	0f 90       	pop	r0
-    4ac8:	0f 90       	pop	r0
-    4aca:	0f 90       	pop	r0
-    4acc:	0f 90       	pop	r0
-			vTaskDelay(1);
-    4ace:	81 e0       	ldi	r24, 0x01	; 1
-    4ad0:	90 e0       	ldi	r25, 0x00	; 0
-    4ad2:	0e 94 b0 12 	call	0x2560	; 0x2560 <vTaskDelay>
+    4a78:	2b 81       	ldd	r18, Y+3	; 0x03
+    4a7a:	3c 81       	ldd	r19, Y+4	; 0x04
+    4a7c:	89 81       	ldd	r24, Y+1	; 0x01
+    4a7e:	9a 81       	ldd	r25, Y+2	; 0x02
+    4a80:	43 2f       	mov	r20, r19
+    4a82:	4f 93       	push	r20
+    4a84:	2f 93       	push	r18
+    4a86:	29 2f       	mov	r18, r25
+    4a88:	2f 93       	push	r18
+    4a8a:	8f 93       	push	r24
+    4a8c:	81 e0       	ldi	r24, 0x01	; 1
+    4a8e:	94 e0       	ldi	r25, 0x04	; 4
+    4a90:	89 2f       	mov	r24, r25
+    4a92:	8f 93       	push	r24
+    4a94:	81 e0       	ldi	r24, 0x01	; 1
+    4a96:	94 e0       	ldi	r25, 0x04	; 4
+    4a98:	8f 93       	push	r24
+    4a9a:	0e 94 4b 37 	call	0x6e96	; 0x6e96 <printf>
+    4a9e:	0f 90       	pop	r0
+    4aa0:	0f 90       	pop	r0
+    4aa2:	0f 90       	pop	r0
+    4aa4:	0f 90       	pop	r0
+    4aa6:	0f 90       	pop	r0
+    4aa8:	0f 90       	pop	r0
 			xSemaphoreGive(xSemaphore_print);
-    4ad6:	80 91 0c 0b 	lds	r24, 0x0B0C	; 0x800b0c <xSemaphore_print>
-    4ada:	90 91 0d 0b 	lds	r25, 0x0B0D	; 0x800b0d <xSemaphore_print+0x1>
-    4ade:	20 e0       	ldi	r18, 0x00	; 0
-    4ae0:	40 e0       	ldi	r20, 0x00	; 0
-    4ae2:	50 e0       	ldi	r21, 0x00	; 0
-    4ae4:	60 e0       	ldi	r22, 0x00	; 0
-    4ae6:	70 e0       	ldi	r23, 0x00	; 0
-    4ae8:	0e 94 81 07 	call	0xf02	; 0xf02 <xQueueGenericSend>
+    4aaa:	80 91 0c 0b 	lds	r24, 0x0B0C	; 0x800b0c <xSemaphore_print>
+    4aae:	90 91 0d 0b 	lds	r25, 0x0B0D	; 0x800b0d <xSemaphore_print+0x1>
+    4ab2:	20 e0       	ldi	r18, 0x00	; 0
+    4ab4:	40 e0       	ldi	r20, 0x00	; 0
+    4ab6:	50 e0       	ldi	r21, 0x00	; 0
+    4ab8:	60 e0       	ldi	r22, 0x00	; 0
+    4aba:	70 e0       	ldi	r23, 0x00	; 0
+    4abc:	0e 94 81 07 	call	0xf02	; 0xf02 <xQueueGenericSend>
+			
+			_uplink_payload.bytes[0] = data.type >> 8;
+    4ac0:	89 81       	ldd	r24, Y+1	; 0x01
+    4ac2:	9a 81       	ldd	r25, Y+2	; 0x02
+    4ac4:	89 2f       	mov	r24, r25
+    4ac6:	99 0f       	add	r25, r25
+    4ac8:	99 0b       	sbc	r25, r25
+    4aca:	80 93 98 09 	sts	0x0998, r24	; 0x800998 <_uplink_payload+0x2>
+			_uplink_payload.bytes[1] = data.type & 0xFF;
+    4ace:	89 81       	ldd	r24, Y+1	; 0x01
+    4ad0:	9a 81       	ldd	r25, Y+2	; 0x02
+    4ad2:	80 93 99 09 	sts	0x0999, r24	; 0x800999 <_uplink_payload+0x3>
+			_uplink_payload.bytes[2] = data.value >> 8;
+    4ad6:	8b 81       	ldd	r24, Y+3	; 0x03
+    4ad8:	9c 81       	ldd	r25, Y+4	; 0x04
+    4ada:	89 2f       	mov	r24, r25
+    4adc:	99 0f       	add	r25, r25
+    4ade:	99 0b       	sbc	r25, r25
+    4ae0:	80 93 9a 09 	sts	0x099A, r24	; 0x80099a <_uplink_payload+0x4>
+			_uplink_payload.bytes[3] = data.value & 0xFF;
+    4ae4:	8b 81       	ldd	r24, Y+3	; 0x03
+    4ae6:	9c 81       	ldd	r25, Y+4	; 0x04
+    4ae8:	80 93 9b 09 	sts	0x099B, r24	; 0x80099b <_uplink_payload+0x5>
 
 			led_short_puls(led_ST4);  // OPTIONAL
     4aec:	83 e0       	ldi	r24, 0x03	; 3
@@ -10583,7 +10573,7 @@ void measure_co2_task(void *pvParameters)
     4b2a:	de b7       	in	r29, 0x3e	; 62
     4b2c:	9e 83       	std	Y+6, r25	; 0x06
     4b2e:	8d 83       	std	Y+5, r24	; 0x05
-	m_data co2; //= {1, 0};
+	m_data co2; 
 	
 	while (1)
 	{
@@ -10628,7 +10618,6 @@ void measure_co2_task(void *pvParameters)
     4b78:	9c 83       	std	Y+4, r25	; 0x04
     4b7a:	8b 83       	std	Y+3, r24	; 0x03
 		
-		//write_to_buffer(xMessageBuffer, co2);
 		if (xQueueSend(xQueue, (void *) &co2, portMAX_DELAY) != pdPASS)
     4b7c:	80 91 14 0b 	lds	r24, 0x0B14	; 0x800b14 <xQueue>
     4b80:	90 91 15 0b 	lds	r25, 0x0B15	; 0x800b15 <xQueue+0x1>
@@ -10718,8 +10707,7 @@ void measure_temp_task(void *pvParameters)
     4c18:	de b7       	in	r29, 0x3e	; 62
     4c1a:	9e 83       	std	Y+6, r25	; 0x06
     4c1c:	8d 83       	std	Y+5, r24	; 0x05
-	
-	//lora_reset();
+	m_data temperature; 
 	
 	while (1)
 	{
@@ -10790,7 +10778,6 @@ void measure_temp_task(void *pvParameters)
     4c88:	8b 83       	std	Y+3, r24	; 0x03
     4c8a:	80 91 14 0b 	lds	r24, 0x0B14	; 0x800b14 <xQueue>
 				
-			//write_to_buffer(xMessageBuffer,temperature);
 			if (xQueueSend(xQueue, (void *) &temperature, portMAX_DELAY) != pdPASS)
     4c8e:	90 91 15 0b 	lds	r25, 0x0B15	; 0x800b15 <xQueue+0x1>
     4c92:	20 e0       	ldi	r18, 0x00	; 0
@@ -10854,13 +10841,11 @@ void measure_temp_task(void *pvParameters)
     4d08:	60 e0       	ldi	r22, 0x00	; 0
     4d0a:	70 e0       	ldi	r23, 0x00	; 0
     4d0c:	0e 94 81 07 	call	0xf02	; 0xf02 <xQueueGenericSend>
-    4d10:	8e e3       	ldi	r24, 0x3E	; 62
+    4d10:	81 e7       	ldi	r24, 0x71	; 113
 			}
 		}
-		
-		//m_print("Temperature sent to the message buffer!\n",xSemaphore_print);
-		vTaskDelay(1000/portTICK_PERIOD_MS);
-    4d12:	90 e0       	ldi	r25, 0x00	; 0
+		vTaskDelay(10000/portTICK_PERIOD_MS);
+    4d12:	92 e0       	ldi	r25, 0x02	; 2
     4d14:	0e 94 b0 12 	call	0x2560	; 0x2560 <vTaskDelay>
     4d18:	82 cf       	rjmp	.-252    	; 0x4c1e <measure_temp_task+0x10>
 

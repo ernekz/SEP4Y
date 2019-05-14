@@ -4,8 +4,6 @@
 
 Callbacks\measure_co2_callback.c
 
-write_to_buffer.c
-
 Callbacks\timer_5_mins_callback.c
 
 FreeRTOS\FreeRTOSTraceDriver\FreeRTOSTraceDriver.c

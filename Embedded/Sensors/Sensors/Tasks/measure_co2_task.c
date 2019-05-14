@@ -9,7 +9,7 @@
 
 void measure_co2_task(void *pvParameters)
 {
-	m_data co2; //= {1, 0};
+	m_data co2; 
 	
 	while (1)
 	{
@@ -26,7 +26,6 @@ void measure_co2_task(void *pvParameters)
 		co2.type = 1;
 		co2.value = (int) co2_value;
 		
-		//write_to_buffer(xMessageBuffer, co2);
 		if (xQueueSend(xQueue, (void *) &co2, portMAX_DELAY) != pdPASS)
 		{
 			m_print("Queue is full! Failed to send CO2!\n",xSemaphore_print);

@@ -134,21 +134,6 @@ Discarded input sections
  .text          0x00000000        0x0 Callbacks/measure_co2_callback.o
  .data          0x00000000        0x0 Callbacks/measure_co2_callback.o
  .bss           0x00000000        0x0 Callbacks/measure_co2_callback.o
- .text          0x00000000        0x0 write_to_buffer.o
- .data          0x00000000        0x0 write_to_buffer.o
- .bss           0x00000000        0x0 write_to_buffer.o
- .text.write_to_buffer
-                0x00000000       0x80 write_to_buffer.o
- .debug_info    0x00000000      0x15d write_to_buffer.o
- .debug_abbrev  0x00000000       0xb9 write_to_buffer.o
- .debug_loc     0x00000000       0x47 write_to_buffer.o
- .debug_aranges
-                0x00000000       0x20 write_to_buffer.o
- .debug_ranges  0x00000000       0x10 write_to_buffer.o
- .debug_line    0x00000000      0x143 write_to_buffer.o
- .debug_str     0x00000000      0x250 write_to_buffer.o
- .comment       0x00000000       0x31 write_to_buffer.o
- .debug_frame   0x00000000       0x34 write_to_buffer.o
  .text          0x00000000        0x0 Callbacks/timer_5_mins_callback.o
  .data          0x00000000        0x0 Callbacks/timer_5_mins_callback.o
  .bss           0x00000000        0x0 Callbacks/timer_5_mins_callback.o
@@ -400,17 +385,17 @@ Discarded input sections
  .text          0x00000000        0x0 Tasks/print_measurements_task.o
  .data          0x00000000        0x0 Tasks/print_measurements_task.o
  .bss           0x00000000        0x0 Tasks/print_measurements_task.o
- .rodata        0x00000000       0x50 Tasks/print_measurements_task.o
+ .rodata        0x00000000       0x74 Tasks/print_measurements_task.o
  .text.print_measuremenets_task
-                0x00000000       0xe8 Tasks/print_measurements_task.o
- .debug_info    0x00000000      0x169 Tasks/print_measurements_task.o
- .debug_abbrev  0x00000000       0xd1 Tasks/print_measurements_task.o
- .debug_loc     0x00000000       0x47 Tasks/print_measurements_task.o
+                0x00000000       0xc4 Tasks/print_measurements_task.o
+ .debug_info    0x00000000      0x150 Tasks/print_measurements_task.o
+ .debug_abbrev  0x00000000       0xc6 Tasks/print_measurements_task.o
+ .debug_loc     0x00000000       0x48 Tasks/print_measurements_task.o
  .debug_aranges
                 0x00000000       0x20 Tasks/print_measurements_task.o
  .debug_ranges  0x00000000       0x10 Tasks/print_measurements_task.o
- .debug_line    0x00000000      0x1e9 Tasks/print_measurements_task.o
- .debug_str     0x00000000      0x242 Tasks/print_measurements_task.o
+ .debug_line    0x00000000      0x1b7 Tasks/print_measurements_task.o
+ .debug_str     0x00000000      0x237 Tasks/print_measurements_task.o
  .comment       0x00000000       0x31 Tasks/print_measurements_task.o
  .debug_frame   0x00000000       0x34 Tasks/print_measurements_task.o
  .text          0x00000000        0x0 main.o
@@ -717,7 +702,6 @@ Linker script and memory map
 Address of section .data set to 0x800200
 LOAD C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega2560/avr6/crtatmega2560.o
 LOAD Callbacks/measure_co2_callback.o
-LOAD write_to_buffer.o
 LOAD Callbacks/timer_5_mins_callback.o
 LOAD FreeRTOS/FreeRTOSTraceDriver/FreeRTOSTraceDriver.o
 LOAD FreeRTOS/src/croutine.o
