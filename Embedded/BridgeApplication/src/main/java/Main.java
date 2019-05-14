@@ -16,10 +16,10 @@ public class Main {
     public static void main(String []args){
 
 
-        MongoDB mongoDB= new MongoDB();
-       //LoraClient loraClient = new LoraClient();
-        mongoDB.insertNewDocument("sep4collection", 2340, 21);
+        //MongoDB mongoDB= new MongoDB();
+       LoraClient loraClient = new LoraClient();
+       // mongoDB.insertNewDocument("sep4collection", 2340, 21);
 
-//       while(true){}
+       while(true){}
    }
 }

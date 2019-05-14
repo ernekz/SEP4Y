@@ -52,25 +52,38 @@ public class LoraClient implements WebSocket.Listener {
         return new CompletableFuture().completedFuture("Pong completed.").thenAccept(System.out::println);
     }
     public CompletionStage<?> onText(WebSocket webSocket, CharSequence data, boolean least) {
-        if(data.toString().contains(keyword)&& stringMessage!=""){
-            mongoDB= new MongoDB();
-            List<String> message = new ArrayList<String>(Arrays.asList(data.toString().split(",")));
-            for(int i=0; i<message.size(); i++){
-                if(message.get(i).contains(keyword)){
-                    sendData(message, i);
-                }
-            }
-            stringMessage="";
+        if(data.toString().contains(keyword)){
+        System.out.println("JSON MESAGE: "+data);
+//            mongoDB= new MongoDB();
+//            List<String> message = new ArrayList<String>(Arrays.asList(data.toString().split(",")));
+//            for(int i=0; i<message.size(); i++){
+//                if(message.get(i).contains(keyword)){
+//                    sendData(message, i);
+//                }
+//            }
+//            stringMessage="";
         }
         webSocket.request(1);
         return new CompletableFuture().completedFuture("onText() completed.").thenAccept(System.out::println);
     }
     public void sendData(List<String> message, int dataIndex){
                 System.out.println(message.get(dataIndex));
-                hexTemperature=message.get(dataIndex).substring(12, 16);
-                decTemperature = Integer.parseInt(hexTemperature, 16);
-                hexCo2=message.get(dataIndex).substring(16,20);
-                decCo2=Integer.parseInt(hexCo2, 16);
-                mongoDB.insertNewDocument("sep4collection", decCo2, decTemperature);
+                if (message.get(dataIndex).substring(12)=="1"){
+                    hexCo2=message.get(dataIndex).substring(13, 16);
+                    decCo2=Integer.parseInt(hexCo2, 16)/10;
+                    System.out.println("CO2 value: "+decCo2);
+                }else{
+                    hexTemperature=message.get(dataIndex).substring(13,16);
+                    decTemperature = Integer.parseInt(hexTemperature, 16)/10;
+                    System.out.println("Temperature value: "+decTemperature);
+                }
+
+                if(hexTemperature!="0000"&&hexCo2!="0000"){
+                    mongoDB.insertNewDocument("sep4collection", decCo2, decTemperature);
+                    hexCo2="0000";
+                    hexTemperature="0000";
+                }
+
+
     }
 }
