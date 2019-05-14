@@ -14,7 +14,11 @@ void print_measuremenets_task(void *pvParameters)
 	
 	while (1)
 	{
-		xSemaphoreTake(xSemaphore,portMAX_DELAY);
+		xSemaphoreTake(xSemaphore_print,portMAX_DELAY);
+		xSemaphoreTake(xSemaphore_buffer, portMAX_DELAY);
+		
+		
+		m_print("\nMeasurements Printing task running!\n",xSemaphore_print);
 		
 		xRecievedBytes = xMessageBufferReceive(xMessageBuffer
 							,&data
@@ -24,12 +28,13 @@ void print_measuremenets_task(void *pvParameters)
 		
 		for (int i = 0; i < xRecievedBytes; i++)
 		{
-			vTaskDelay(100/portTICK_PERIOD_MS);
 			xSemaphoreTake(xSemaphore_print,portMAX_DELAY);
 			printf("Received measurement: type: %d, val: %d\n\n",data.type, data.value);
-			xSemaphoreGive(xSemaphore_print);
 			vTaskDelay(1);
+			xSemaphoreGive(xSemaphore_print);
 		}
+		xSemaphoreGive(xSemaphore_buffer);
+		vTaskDelay(1000/portTICK_PERIOD_MS);
 	}
 	vTaskDelete(NULL);
 }

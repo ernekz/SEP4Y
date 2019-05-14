@@ -7,20 +7,27 @@
 
 #include "../Headers/m_lora_includes.h"
 
+void lora_reset();
+
 void measure_temp_task(void *pvParameters)
 {
 	m_data temperature = {2, 0};
 	
+	//lora_reset();
+	
 	while (1)
 	{
-		xSemaphoreTake(xSemaphore,portMAX_DELAY);
+		xSemaphoreTake(xSemaphore_temperature, portMAX_DELAY);
 		
+		m_print("\nMeasuring Temperature Task running!\n",xSemaphore_print);
+		
+
 		if ( HIH8120_OK != hih8120Wakeup() )
 		{
 			m_print("Error in waking up the sensors!",xSemaphore_print);
 		}
 		
-		vTaskDelay(100/portTICK_PERIOD_MS);
+		vTaskDelay(50/portTICK_PERIOD_MS);
 		
 	
 		if ( HIH8120_OK !=  hih8120Meassure() )
@@ -29,20 +36,17 @@ void measure_temp_task(void *pvParameters)
 		}
 		else
 		{	
-			vTaskDelay(300/portTICK_PERIOD_MS);
+			vTaskDelay(10/portTICK_PERIOD_MS);
 			temperature.value = hih8120GetTemperature_x10();
 				
 			xSemaphoreTake(xSemaphore_print,portMAX_DELAY);
 			printf("Temperature(type: %d, val: %d) sent!\n", temperature.type,temperature.value);
 			xSemaphoreGive(xSemaphore_print);
-			//vTaskDelay(1);
+			write_to_buffer(xMessageBuffer,temperature);
 		}
 		
-		xMessageBufferSend(xMessageBuffer
-		, &temperature 
-		, sizeof (m_data)
-		, 0);
-		
 		m_print("Temperature sent to the message buffer!\n",xSemaphore_print);
+		vTaskDelay(1000/portTICK_PERIOD_MS);
 	}
+	vTaskDelete(NULL);
 }

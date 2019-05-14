@@ -7,16 +7,10 @@
 
 #include "../Headers/m_lora_includes.h"
 
+uint16_t co2_value;
+
+
 void measure_co2_callback(uint16_t ppm)
 {
-	m_data co2 = {1, ppm};
-	
-	xMessageBufferSend( xMessageBuffer
-					, &co2
-					, sizeof (m_data)
-					,0);
-	
-	xSemaphoreTake(xSemaphore_print,portMAX_DELAY);
-	printf("CO2 (type: %d, val: %u) sent!\n", co2.type, (unsigned int)co2.value);
-	xSemaphoreGive(xSemaphore_print);
+	co2_value = ppm;
 }

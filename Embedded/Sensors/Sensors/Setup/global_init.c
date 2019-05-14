@@ -11,8 +11,11 @@ void measure_co2_callback(uint16_t ppm);
 
 MessageBufferHandle_t xMessageBuffer;
 
-SemaphoreHandle_t xSemaphore;
+SemaphoreHandle_t xSemaphore_co2;
 SemaphoreHandle_t xSemaphore_print;
+SemaphoreHandle_t xSemaphore_temperature;
+SemaphoreHandle_t xSemaphore_view_data;
+SemaphoreHandle_t xSemaphore_buffer;
 
 void global_init()
 {
@@ -20,8 +23,12 @@ void global_init()
 	
 	sei(); // enables interrupts
 	
-	xSemaphore = xSemaphoreCreateMutex();
 	xSemaphore_print = xSemaphoreCreateBinary();
+	
+	xSemaphore_co2 = xSemaphoreCreateMutex();
+	xSemaphore_temperature = xSemaphoreCreateMutex();
+	xSemaphore_view_data = xSemaphoreCreateMutex();
+	xSemaphore_buffer = xSemaphoreCreateMutex();
 	
 	xSemaphoreGive(xSemaphore_print);
 	
@@ -43,7 +50,7 @@ void global_init()
 		m_print("Temp/Humidity driver created.\n",xSemaphore_print);
 	}
 	
-	/*
+	/* 
 		Initialize MH-Z19 CO2 Driver
 	*/
 	mh_z19_create(ser_USART3, measure_co2_callback);

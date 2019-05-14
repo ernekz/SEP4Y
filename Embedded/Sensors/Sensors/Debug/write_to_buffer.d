@@ -1,5 +1,5 @@
-main.d main.o: .././main.c .././Headers/m_lora_includes.h \
- ../FreeRTOS/src/ATMEGA_FreeRTOS.h \
+write_to_buffer.d write_to_buffer.o: .././write_to_buffer.c \
+ .././Headers/m_lora_includes.h ../FreeRTOS/src/ATMEGA_FreeRTOS.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stddef.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stdint.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\stdint.h \

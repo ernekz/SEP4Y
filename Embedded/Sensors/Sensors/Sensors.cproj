@@ -152,21 +152,15 @@
     <Compile Include="Callbacks\measure_co2_callback.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="Callbacks\measure_co2_timer_callback.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="Callbacks\print_measurements_timer_callback.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="Callbacks\measure_temp_timer_callback.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="Callbacks\send_data_timer_callback.c">
+    <Compile Include="write_to_buffer.c">
       <SubType>compile</SubType>
     </Compile>
     <None Include="FreeRTOS\Example\main.c">
       <SubType>compile</SubType>
     </None>
+    <Compile Include="Callbacks\timer_5_mins_callback.c">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="FreeRTOS\FreeRTOSTraceDriver\FreeRTOSTraceDriver.c">
       <SubType>compile</SubType>
     </Compile>
@@ -266,13 +260,16 @@
     <Compile Include="Setup\create_all_timers.c">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="Setup\lora_reset.c">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="Setup\lora_setup.c">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="Setup\global_init.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="Tasks\lora_handler_task.c">
+    <Compile Include="Tasks\lora_send_data_task.c">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="Tasks\measure_co2_task.c">

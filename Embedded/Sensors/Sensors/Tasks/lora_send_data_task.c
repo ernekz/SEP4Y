@@ -7,29 +7,20 @@
 
 #include "../Headers/m_lora_includes.h"
 
-void lora_setup(void);
-
+void lora_reset();
 
 static lora_payload_t _uplink_payload;
 
 /*
 	Task that sends data to the server
 */
-void lora_handler_task(void *pvParameters)
+void lora_send_data_task(void *pvParameters)
 {
 	m_data data;
 	size_t xRecievedBytes;
 	
-	/*
-		Hardware reset of LoRaWAN transceiver
-	*/
-	lora_driver_reset_rn2483(1); // Activate reset line
-	vTaskDelay(2); 
-	lora_driver_reset_rn2483(0); // Release reset line
-	vTaskDelay(150); // Wait for transceiver module to wake up after reset
-	lora_driver_flush_buffers(); // get rid of first version string from module after reset!
 
-	lora_setup();
+	lora_reset();
 
 	_uplink_payload.len = 4;
 	_uplink_payload.port_no = 2;
@@ -37,23 +28,31 @@ void lora_handler_task(void *pvParameters)
 
 	while (1)
 	{
-		xSemaphoreTake(xSemaphore, 0);
-		vTaskDelay(10000/portTICK_PERIOD_MS);
+		xSemaphoreTake(xSemaphore_view_data, portMAX_DELAY);
+		
+		m_print("\nData Sending Task running!\n",xSemaphore_print);
+		
+		vTaskDelay(1000/portTICK_PERIOD_MS);
 
 		xRecievedBytes = xMessageBufferReceive(xMessageBuffer
 		,&data
 		, sizeof(m_data)
 		,0 );
 		
-		for (int i = 0; i < xRecievedBytes; i++)
-		{
-			for (int j = 0; j < _uplink_payload.len; j+=2)
-			{
-				_uplink_payload.bytes[j] = data.type >> 8;
-				_uplink_payload.bytes[j+1] = data.type & 0xFF;
-			}
-		}
+		//for (int i = 0; i < xRecievedBytes; i++)
+		//{
+			_uplink_payload.bytes[1] = data.type >> 8;
+			_uplink_payload.bytes[2] = data.type & 0xFF;
+			_uplink_payload.bytes[3] = data.value >> 8;
+			_uplink_payload.bytes[4] = data.type & 0xFF;	
+			
+			xSemaphoreTake(xSemaphore_print,portMAX_DELAY);
+			printf("Received measurement for sending: type: %d, val: %d\n\n",data.type, data.value);
+			vTaskDelay(1);
+			xSemaphoreGive(xSemaphore_print);
+		//}
 
+		//vTaskDelay()
 		//// Some dummy payload
 		//uint16_t hum = 12345; // Dummy humidity
 		//int16_t temp = 675; // Dummy temp

@@ -1,6 +1,5 @@
-Callbacks/send_data_timer_callback.d Callbacks/send_data_timer_callback.o: \
- ../Callbacks/send_data_timer_callback.c \
- ../Callbacks/../Headers/m_lora_includes.h \
+Tasks/lora_send_data_task.d Tasks/lora_send_data_task.o: \
+ ../Tasks/lora_send_data_task.c ../Tasks/../Headers/m_lora_includes.h \
  ../FreeRTOS/src/ATMEGA_FreeRTOS.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stddef.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stdint.h \
@@ -38,7 +37,7 @@ Callbacks/send_data_timer_callback.d Callbacks/send_data_timer_callback.o: \
  ../../../Iot\ driver\ Library/hcSr501.h ../FreeRTOS/src/message_buffer.h \
  ../FreeRTOS/src/stream_buffer.h
 
-../Callbacks/../Headers/m_lora_includes.h:
+../Tasks/../Headers/m_lora_includes.h:
 
 ../FreeRTOS/src/ATMEGA_FreeRTOS.h:
 

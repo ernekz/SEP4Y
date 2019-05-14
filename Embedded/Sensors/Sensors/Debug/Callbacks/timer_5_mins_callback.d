@@ -1,6 +1,5 @@
-Callbacks/measure_temp_timer_callback.d \
- Callbacks/measure_temp_timer_callback.o: \
- ../Callbacks/measure_temp_timer_callback.c \
+Callbacks/timer_5_mins_callback.d Callbacks/timer_5_mins_callback.o: \
+ ../Callbacks/timer_5_mins_callback.c \
  ../Callbacks/../Headers/m_lora_includes.h \
  ../FreeRTOS/src/ATMEGA_FreeRTOS.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stddef.h \

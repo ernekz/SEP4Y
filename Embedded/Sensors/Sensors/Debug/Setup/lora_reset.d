@@ -1,8 +1,5 @@
-Callbacks/measure_co2_timer_callback.d \
- Callbacks/measure_co2_timer_callback.o: \
- ../Callbacks/measure_co2_timer_callback.c \
- ../Callbacks/../Headers/m_lora_includes.h \
- ../FreeRTOS/src/ATMEGA_FreeRTOS.h \
+Setup/lora_reset.d Setup/lora_reset.o: ../Setup/lora_reset.c \
+ ../Setup/../Headers/m_lora_includes.h ../FreeRTOS/src/ATMEGA_FreeRTOS.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stddef.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stdint.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\stdint.h \
@@ -39,7 +36,7 @@ Callbacks/measure_co2_timer_callback.d \
  ../../../Iot\ driver\ Library/hcSr501.h ../FreeRTOS/src/message_buffer.h \
  ../FreeRTOS/src/stream_buffer.h
 
-../Callbacks/../Headers/m_lora_includes.h:
+../Setup/../Headers/m_lora_includes.h:
 
 ../FreeRTOS/src/ATMEGA_FreeRTOS.h:
 

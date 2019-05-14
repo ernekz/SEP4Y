@@ -26,29 +26,31 @@
 #include <hcSr501.h>
 #include <message_buffer.h>
 
-#define LORA_appEUI "4203716466d93a07"
-#define LORA_appKEY "7dc57c5406c0882d3a4d5a9ed7ae5c6f"
+#define LORA_appEUI "7933b719938849c4"
+#define LORA_appKEY "d4bf3a8e5dd4e7867d983f79f09300ec"
+
 #define LED_TASK_PRIORITY (tskIDLE_PRIORITY + 2)
-#define LORA_HANDLER_TASK_PRIORITY (tskIDLE_PRIORITY + 1)
+#define LORA_RESET_TASK_PRIORITY (tskIDLE_PRIORITY + 1)
 
-
-void m_print(char message[], SemaphoreHandle_t pxSemaphore);
-
-extern SemaphoreHandle_t xSemaphore;
+extern SemaphoreHandle_t xSemaphore_co2;
 extern SemaphoreHandle_t xSemaphore_print;
+extern SemaphoreHandle_t xSemaphore_temperature;
+extern SemaphoreHandle_t xSemaphore_view_data;
+extern SemaphoreHandle_t xSemaphore_buffer;
 
 extern MessageBufferHandle_t xMessageBuffer;
+extern TimerHandle_t xTimer_5_mins;
 
 
-extern TimerHandle_t xTimer_measure_temp;
-extern TimerHandle_t xTimer_measure_co2;
-extern TimerHandle_t xTimer_read_measurements;
-extern TimerHandle_t xTimer_send_data;
+extern uint16_t co2_value;
 
 typedef struct measurement{
 	int type;
 	uint16_t value;
 } m_data;
 
+
+void m_print(char message[], SemaphoreHandle_t pxSemaphore);
+void write_to_buffer(MessageBufferHandle_t xMessageBuffer, m_data data);
 
 #endif /* M_INCLUDES_H_ */

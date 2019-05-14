@@ -4,13 +4,9 @@
 
 Callbacks\measure_co2_callback.c
 
-Callbacks\measure_co2_timer_callback.c
+write_to_buffer.c
 
-Callbacks\print_measurements_timer_callback.c
-
-Callbacks\measure_temp_timer_callback.c
-
-Callbacks\send_data_timer_callback.c
+Callbacks\timer_5_mins_callback.c
 
 FreeRTOS\FreeRTOSTraceDriver\FreeRTOSTraceDriver.c
 
@@ -40,11 +36,13 @@ Setup\create_all_tasks.c
 
 Setup\create_all_timers.c
 
+Setup\lora_reset.c
+
 Setup\lora_setup.c
 
 Setup\global_init.c
 
-Tasks\lora_handler_task.c
+Tasks\lora_send_data_task.c
 
 Tasks\measure_co2_task.c
 
