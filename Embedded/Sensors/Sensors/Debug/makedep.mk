@@ -4,7 +4,7 @@
 
 Callbacks\measure_co2_callback.c
 
-Callbacks\timer_5_mins_callback.c
+Callbacks\timer_callback.c
 
 FreeRTOS\FreeRTOSTraceDriver\FreeRTOSTraceDriver.c
 

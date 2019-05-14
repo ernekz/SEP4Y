@@ -12,6 +12,6 @@ void timer_callback(TimerHandle_t pxTimer)
 
 	xSemaphoreGive(xSemaphore_co2);
 	
-	xSemaphoreGive(xSemaphore_view_data);
+	xSemaphoreGive(xSemaphore_send_data);
 	
 }

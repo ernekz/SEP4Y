@@ -35,7 +35,7 @@
 extern SemaphoreHandle_t xSemaphore_co2;
 extern SemaphoreHandle_t xSemaphore_print;
 extern SemaphoreHandle_t xSemaphore_temperature;
-extern SemaphoreHandle_t xSemaphore_view_data;
+extern SemaphoreHandle_t xSemaphore_send_data;
 extern SemaphoreHandle_t xSemaphore_buffer;
 
 extern TimerHandle_t xTimer;

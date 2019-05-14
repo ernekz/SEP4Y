@@ -8,15 +8,15 @@
 #include "../Headers/m_lora_includes.h"
 
 
-void timer_5_mins_callback(TimerHandle_t pxTimer);
+void timer_callback(TimerHandle_t pxTimer);
 
 TimerHandle_t xTimer;
 
 void create_all_timers()
 {
 	xTimer = xTimerCreate("5 minutes timer",
-			(20000/portTICK_PERIOD_MS),
+			(60000/portTICK_PERIOD_MS),
 			pdTRUE,
 			(void *)0,
-			timer_5_mins_callback);
+			timer_callback);
 }

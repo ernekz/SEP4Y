@@ -155,7 +155,7 @@
     <None Include="FreeRTOS\Example\main.c">
       <SubType>compile</SubType>
     </None>
-    <Compile Include="Callbacks\timer_5_mins_callback.c">
+    <Compile Include="Callbacks\timer_callback.c">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="FreeRTOS\FreeRTOSTraceDriver\FreeRTOSTraceDriver.c">

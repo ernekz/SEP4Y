@@ -15,7 +15,7 @@ QueueHandle_t xQueue;
 SemaphoreHandle_t xSemaphore_co2;
 SemaphoreHandle_t xSemaphore_print;
 SemaphoreHandle_t xSemaphore_temperature;
-SemaphoreHandle_t xSemaphore_view_data;
+SemaphoreHandle_t xSemaphore_send_data;
 SemaphoreHandle_t xSemaphore_buffer;
 
 void global_init()
@@ -28,7 +28,7 @@ void global_init()
 	
 	xSemaphore_co2 = xSemaphoreCreateMutex();
 	xSemaphore_temperature = xSemaphoreCreateMutex();
-	xSemaphore_view_data = xSemaphoreCreateMutex();
+	xSemaphore_send_data = xSemaphoreCreateMutex();
 	xSemaphore_buffer = xSemaphoreCreateMutex();
 	
 	xSemaphoreGive(xSemaphore_print);
