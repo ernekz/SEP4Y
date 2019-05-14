@@ -20,10 +20,10 @@ void print_measuremenets_task(void *pvParameters)
 		
 		m_print("\nMeasurements Printing task running!\n",xSemaphore_print);
 		
-		xRecievedBytes = xMessageBufferReceive(xMessageBuffer
-							,&data
-							, sizeof(m_data)
-							,0 );
+		//xRecievedBytes = xMessageBufferReceive(xMessageBuffer
+							//,&data
+							//, sizeof(m_data)
+							//,0 );
 		
 		
 		for (int i = 0; i < xRecievedBytes; i++)

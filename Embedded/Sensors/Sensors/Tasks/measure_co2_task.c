@@ -9,7 +9,7 @@
 
 void measure_co2_task(void *pvParameters)
 {
-	m_data co2 = {1, 0};
+	m_data co2; //= {1, 0};
 	
 	while (1)
 	{
@@ -23,13 +23,22 @@ void measure_co2_task(void *pvParameters)
 			m_print("Error measuring CO2 value!\n",xSemaphore_print);
 		}
 	
-		co2.value = co2_value;
+		co2.type = 1;
+		co2.value = (int) co2_value;
 		
-		write_to_buffer(xMessageBuffer, co2);
-		xSemaphoreTake(xSemaphore_print,portMAX_DELAY);
-		printf("CO2 (type: %d, val: %u) sent!\n", co2.type, (unsigned int)co2.value);
-		xSemaphoreGive(xSemaphore_print);
-		vTaskDelay(1000/portTICK_PERIOD_MS);
+		//write_to_buffer(xMessageBuffer, co2);
+		if (xQueueSend(xQueue, (void *) &co2, portMAX_DELAY) != pdPASS)
+		{
+			m_print("Queue is full! Failed to send CO2!\n",xSemaphore_print);
+		}
+		else
+		{
+			xSemaphoreTake(xSemaphore_print,portMAX_DELAY);
+			printf("CO2 (type: %d, val: %u) sent to queue!\n", co2.type, (unsigned int)co2.value);
+			xSemaphoreGive(xSemaphore_print);
+		
+		}
+		vTaskDelay(10000/portTICK_PERIOD_MS);
 	}
 	vTaskDelete(NULL);
 }

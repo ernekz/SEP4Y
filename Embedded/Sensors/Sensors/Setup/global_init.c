@@ -9,7 +9,9 @@
 
 void measure_co2_callback(uint16_t ppm);
 
-MessageBufferHandle_t xMessageBuffer;
+//MessageBufferHandle_t xMessageBuffer;
+
+QueueHandle_t xQueue;
 
 SemaphoreHandle_t xSemaphore_co2;
 SemaphoreHandle_t xSemaphore_print;
@@ -32,8 +34,9 @@ void global_init()
 	
 	xSemaphoreGive(xSemaphore_print);
 	
-	xMessageBuffer = xMessageBufferCreate( sizeof (m_data) * 3);
-		
+	//xMessageBuffer = xMessageBufferCreate( sizeof (m_data) * 3);
+	xQueue = xQueueCreate(2,sizeof (m_data *));
+	
 	/*
 		Initialize LoRa Driver
 	*/

@@ -38,15 +38,16 @@ extern SemaphoreHandle_t xSemaphore_temperature;
 extern SemaphoreHandle_t xSemaphore_view_data;
 extern SemaphoreHandle_t xSemaphore_buffer;
 
-extern MessageBufferHandle_t xMessageBuffer;
+//extern MessageBufferHandle_t xMessageBuffer;
 extern TimerHandle_t xTimer_5_mins;
+extern QueueHandle_t xQueue;
 
 
 extern uint16_t co2_value;
 
 typedef struct measurement{
 	int type;
-	uint16_t value;
+	int value;
 } m_data;
 
 
