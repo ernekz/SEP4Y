@@ -46,7 +46,7 @@
     <com_atmel_avrdbg_tool_atmelice>
       <ToolOptions>
         <InterfaceProperties>
-          <JtagDbgClock>200000</JtagDbgClock>
+          <JtagDbgClock>1141769</JtagDbgClock>
         </InterfaceProperties>
         <InterfaceName>JTAG</InterfaceName>
       </ToolOptions>
@@ -55,7 +55,7 @@
       <ToolName>Atmel-ICE</ToolName>
     </com_atmel_avrdbg_tool_atmelice>
     <avrtoolinterface>JTAG</avrtoolinterface>
-    <avrtoolinterfaceclock>200000</avrtoolinterfaceclock>
+    <avrtoolinterfaceclock>1141769</avrtoolinterfaceclock>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
     <ToolchainSettings>
@@ -118,9 +118,11 @@
             <Value>../../../stdio</Value>
             <Value>../FreeRTOS/src</Value>
             <Value>../../../Iot driver Library</Value>
+            <Value>../Headers</Value>
+            <Value>../Tasks</Value>
+            <Value>../Setup</Value>
           </ListValues>
         </avrgcc.compiler.directories.IncludePaths>
-        <avrgcc.compiler.optimization.level>Optimize (-O1)</avrgcc.compiler.optimization.level>
         <avrgcc.compiler.optimization.PackStructureMembers>True</avrgcc.compiler.optimization.PackStructureMembers>
         <avrgcc.compiler.optimization.AllocateBytesNeededForEnum>True</avrgcc.compiler.optimization.AllocateBytesNeededForEnum>
         <avrgcc.compiler.optimization.DebugLevel>Default (-g2)</avrgcc.compiler.optimization.DebugLevel>
@@ -147,21 +149,15 @@
     </ToolchainSettings>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="CO2Task.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="LEDTask.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="LoraHandler.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="TemperatureTask.c">
+    <Compile Include="Callbacks\measure_co2_callback.c">
       <SubType>compile</SubType>
     </Compile>
     <None Include="FreeRTOS\Example\main.c">
       <SubType>compile</SubType>
     </None>
+    <Compile Include="Callbacks\timer_callback.c">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="FreeRTOS\FreeRTOSTraceDriver\FreeRTOSTraceDriver.c">
       <SubType>compile</SubType>
     </Compile>
@@ -249,20 +245,42 @@
     <Compile Include="FreeRTOS\src\variantHooks.c">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="Headers\m_lora_includes.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="m_print.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Setup\create_all_tasks.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Setup\create_all_timers.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Setup\lora_reset.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Setup\lora_setup.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Setup\global_init.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Tasks\lora_send_data_task.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Tasks\measure_co2_task.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Tasks\measure_temp_task.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Tasks\print_measurements_task.c">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="main.c">
       <SubType>compile</SubType>
     </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="FreeRTOS\" />
-    <Folder Include="FreeRTOS\Example\" />
-    <Folder Include="FreeRTOS\FreeRTOSTraceDriver\" />
-    <Folder Include="FreeRTOS\src\" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="FreeRTOS\.git">
-      <SubType>compile</SubType>
-    </None>
     <None Include="FreeRTOS\.gitignore">
       <SubType>compile</SubType>
     </None>
@@ -278,6 +296,16 @@
     <None Include="FreeRTOS\src\license.txt">
       <SubType>compile</SubType>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="FreeRTOS\" />
+    <Folder Include="FreeRTOS\Example\" />
+    <Folder Include="FreeRTOS\FreeRTOSTraceDriver\" />
+    <Folder Include="FreeRTOS\src\" />
+    <Folder Include="Headers" />
+    <Folder Include="Callbacks" />
+    <Folder Include="Setup" />
+    <Folder Include="Tasks" />
   </ItemGroup>
   <Import Project="$(AVRSTUDIO_EXE_PATH)\\Vs\\Compiler.targets" />
 </Project>

@@ -2,13 +2,9 @@
 # Automatically-generated file. Do not edit or delete the file
 ################################################################################
 
-CO2Task.c
+Callbacks\measure_co2_callback.c
 
-LEDTask.c
-
-LoraHandler.c
-
-TemperatureTask.c
+Callbacks\timer_callback.c
 
 FreeRTOS\FreeRTOSTraceDriver\FreeRTOSTraceDriver.c
 
@@ -31,6 +27,26 @@ FreeRTOS\src\tasks.c
 FreeRTOS\src\timers.c
 
 FreeRTOS\src\variantHooks.c
+
+m_print.c
+
+Setup\create_all_tasks.c
+
+Setup\create_all_timers.c
+
+Setup\lora_reset.c
+
+Setup\lora_setup.c
+
+Setup\global_init.c
+
+Tasks\lora_send_data_task.c
+
+Tasks\measure_co2_task.c
+
+Tasks\measure_temp_task.c
+
+Tasks\print_measurements_task.c
 
 main.c
 

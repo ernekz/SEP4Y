@@ -31,9 +31,9 @@ public class MongoDB {
         Document document = new Document("date", currentDateAndTime)
                 .append("co2", co2)
                 .append("temperature", temperature)
-                .append("room_id", 1)
+                .append("room_id", 2)
                 .append("date_created", LocalDate.now().format(ISO_LOCAL_DATE))
-                .append("name", "Real data example");
+                .append("name", "Data example");
                 mongoDatabase.getCollection(collectionName).insertOne(document);
     }
 }
