@@ -7,10 +7,10 @@
 
 #include "../Headers/m_lora_includes.h"
 
-int co2_value;
+uint16_t co2_value;
 
 
 void measure_co2_callback(uint16_t ppm)
 {
-	co2_value = (int) ppm;
+	co2_value = ppm;
 }

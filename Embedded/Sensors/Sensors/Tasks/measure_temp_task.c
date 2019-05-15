@@ -40,7 +40,6 @@ void measure_temp_task(void *pvParameters)
 				m_print("Queue is full! Failed to send temperature!\n",xSemaphore_print);
 			}
 		}
-		//vTaskDelay(10000/portTICK_PERIOD_MS);
 	}
 	vTaskDelete(NULL);
 }

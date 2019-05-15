@@ -29,6 +29,10 @@ void lora_send_data_task(void *pvParameters)
 		xSemaphoreTake(xSemaphore_send_data, portMAX_DELAY);
 
 		vTaskDelay(1000/portTICK_PERIOD_MS);
+		
+		xSemaphoreTake(xSemaphore_send_data, portMAX_DELAY);
+
+		vTaskDelay(1000/portTICK_PERIOD_MS);
 
 		if (xQueueReceive(xQueue, &(data), 0) != pdTRUE)
 		{

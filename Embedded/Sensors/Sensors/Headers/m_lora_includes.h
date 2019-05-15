@@ -42,7 +42,7 @@ extern TimerHandle_t xTimer;
 extern QueueHandle_t xQueue;
 
 
-extern int co2_value;
+extern uint16_t co2_value;
 
 typedef struct measurement{
 	int type;
